@@ -1,0 +1,10 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\SelectionmodeOne\bin\Debug\SelectionmodeOne.exe.config
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\SelectionmodeOne\bin\Debug\SelectionmodeOne.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\SelectionmodeOne\bin\Debug\SelectionmodeOne.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\SelectionmodeOne\obj\Debug\SelectionmodeOne.csproj.AssemblyReference.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\SelectionmodeOne\obj\Debug\SelectionmodeOne.Form1.resources
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\SelectionmodeOne\obj\Debug\SelectionmodeOne.Properties.Resources.resources
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\SelectionmodeOne\obj\Debug\SelectionmodeOne.csproj.GenerateResource.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\SelectionmodeOne\obj\Debug\SelectionmodeOne.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\SelectionmodeOne\obj\Debug\SelectionmodeOne.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\SelectionmodeOne\obj\Debug\SelectionmodeOne.pdb

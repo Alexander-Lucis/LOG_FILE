@@ -1,0 +1,10 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\VegetableListApp\bin\Debug\VegetableListApp.exe.config
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\VegetableListApp\bin\Debug\VegetableListApp.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\VegetableListApp\bin\Debug\VegetableListApp.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\VegetableListApp\obj\Debug\VegetableListApp.csproj.AssemblyReference.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\VegetableListApp\obj\Debug\VegetableListApp.Form1.resources
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\VegetableListApp\obj\Debug\VegetableListApp.Properties.Resources.resources
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\VegetableListApp\obj\Debug\VegetableListApp.csproj.GenerateResource.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\VegetableListApp\obj\Debug\VegetableListApp.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\VegetableListApp\obj\Debug\VegetableListApp.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\VegetableListApp\obj\Debug\VegetableListApp.pdb
