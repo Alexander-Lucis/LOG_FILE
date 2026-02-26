@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\bin\Debug\net10.0\MatrixMultiplication.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\bin\Debug\net10.0\MatrixMultiplication.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\bin\Debug\net10.0\MatrixMultiplication.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\bin\Debug\net10.0\MatrixMultiplication.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\bin\Debug\net10.0\MatrixMultiplication.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\obj\Debug\net10.0\MatrixMultiplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\obj\Debug\net10.0\MatrixMultiplication.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\obj\Debug\net10.0\MatrixMultiplication.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\obj\Debug\net10.0\MatrixMultiplication.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\obj\Debug\net10.0\MatrixMultiplication.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\obj\Debug\net10.0\refint\MatrixMultiplication.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\obj\Debug\net10.0\MatrixMultiplication.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\obj\Debug\net10.0\MatrixMultiplication.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\MatrixMultiplication\obj\Debug\net10.0\ref\MatrixMultiplication.dll

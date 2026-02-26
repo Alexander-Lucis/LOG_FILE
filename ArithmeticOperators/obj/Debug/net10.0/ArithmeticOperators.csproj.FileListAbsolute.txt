@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\bin\Debug\net10.0\ArithmeticOperators.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\bin\Debug\net10.0\ArithmeticOperators.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\bin\Debug\net10.0\ArithmeticOperators.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\bin\Debug\net10.0\ArithmeticOperators.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\bin\Debug\net10.0\ArithmeticOperators.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\obj\Debug\net10.0\ArithmeticOperators.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\obj\Debug\net10.0\ArithmeticOperators.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\obj\Debug\net10.0\ArithmeticOperators.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\obj\Debug\net10.0\ArithmeticOperators.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\obj\Debug\net10.0\ArithmeticOperators.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\obj\Debug\net10.0\refint\ArithmeticOperators.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\obj\Debug\net10.0\ArithmeticOperators.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\obj\Debug\net10.0\ArithmeticOperators.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\ArithmeticOperators\obj\Debug\net10.0\ref\ArithmeticOperators.dll
