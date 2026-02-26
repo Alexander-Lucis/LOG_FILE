@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\bin\Debug\net10.0\EmployeeDetails.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\bin\Debug\net10.0\EmployeeDetails.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\bin\Debug\net10.0\EmployeeDetails.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\bin\Debug\net10.0\EmployeeDetails.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\bin\Debug\net10.0\EmployeeDetails.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\obj\Debug\net10.0\EmployeeDetails.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\obj\Debug\net10.0\EmployeeDetails.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\obj\Debug\net10.0\EmployeeDetails.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\obj\Debug\net10.0\EmployeeDetails.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\obj\Debug\net10.0\EmployeeDetails.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\obj\Debug\net10.0\refint\EmployeeDetails.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\obj\Debug\net10.0\EmployeeDetails.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\obj\Debug\net10.0\EmployeeDetails.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\EmployeeDetails\obj\Debug\net10.0\ref\EmployeeDetails.dll

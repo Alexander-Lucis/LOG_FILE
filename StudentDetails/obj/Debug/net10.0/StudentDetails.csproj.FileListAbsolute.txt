@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\bin\Debug\net10.0\StudentDetails.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\bin\Debug\net10.0\StudentDetails.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\bin\Debug\net10.0\StudentDetails.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\bin\Debug\net10.0\StudentDetails.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\bin\Debug\net10.0\StudentDetails.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\obj\Debug\net10.0\StudentDetails.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\obj\Debug\net10.0\StudentDetails.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\obj\Debug\net10.0\StudentDetails.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\obj\Debug\net10.0\StudentDetails.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\obj\Debug\net10.0\StudentDetails.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\obj\Debug\net10.0\refint\StudentDetails.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\obj\Debug\net10.0\StudentDetails.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\obj\Debug\net10.0\StudentDetails.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\StudentDetails\obj\Debug\net10.0\ref\StudentDetails.dll
