@@ -1,0 +1,2 @@
+This is a test message that will be written to the file.
+The standard output has been redirected to 'output.txt'.
