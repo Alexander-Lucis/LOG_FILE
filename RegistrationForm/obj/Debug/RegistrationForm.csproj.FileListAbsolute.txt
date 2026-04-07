@@ -1,0 +1,10 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\RegistrationForm\bin\Debug\RegistrationForm.exe.config
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\RegistrationForm\bin\Debug\RegistrationForm.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\RegistrationForm\bin\Debug\RegistrationForm.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\RegistrationForm\obj\Debug\RegistrationForm.csproj.AssemblyReference.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\RegistrationForm\obj\Debug\RegistrationForm.Form1.resources
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\RegistrationForm\obj\Debug\RegistrationForm.Properties.Resources.resources
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\RegistrationForm\obj\Debug\RegistrationForm.csproj.GenerateResource.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\RegistrationForm\obj\Debug\RegistrationForm.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\RegistrationForm\obj\Debug\RegistrationForm.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\RegistrationForm\obj\Debug\RegistrationForm.pdb

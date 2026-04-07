@@ -1,0 +1,10 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\TextStylerApp\obj\Debug\TextStylerApp.csproj.AssemblyReference.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\TextStylerApp\obj\Debug\TextStylerApp.Properties.Resources.resources
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\TextStylerApp\obj\Debug\TextStylerApp.csproj.GenerateResource.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\TextStylerApp\obj\Debug\TextStylerApp.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\TextStylerApp\bin\Debug\TextStylerApp.exe.config
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\TextStylerApp\bin\Debug\TextStylerApp.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\TextStylerApp\bin\Debug\TextStylerApp.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\TextStylerApp\obj\Debug\TextStylerApp.Form1.resources
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\TextStylerApp\obj\Debug\TextStylerApp.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\TextStylerApp\obj\Debug\TextStylerApp.pdb

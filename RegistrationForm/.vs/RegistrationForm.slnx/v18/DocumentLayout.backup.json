@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Muzammil Bagewadi\\Desktop\\SRX_MCS-25\\DOT-NET_REMASTERED\\A3 REMASTERED\\RegistrationForm\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{205904C1-AE92-4A7E-A70A-6F08C301C652}|RegistrationForm.csproj|c:\\users\\muzammil bagewadi\\desktop\\srx_mcs-25\\dot-net_remastered\\a3 remastered\\registrationform\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{205904C1-AE92-4A7E-A70A-6F08C301C652}|RegistrationForm.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{205904C1-AE92-4A7E-A70A-6F08C301C652}|RegistrationForm.csproj|C:\\Users\\Muzammil Bagewadi\\Desktop\\SRX_MCS-25\\DOT-NET_REMASTERED\\A3 REMASTERED\\RegistrationForm\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{205904C1-AE92-4A7E-A70A-6F08C301C652}|RegistrationForm.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{205904C1-AE92-4A7E-A70A-6F08C301C652}|RegistrationForm.csproj|C:\\Users\\Muzammil Bagewadi\\Desktop\\SRX_MCS-25\\DOT-NET_REMASTERED\\A3 REMASTERED\\RegistrationForm\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{205904C1-AE92-4A7E-A70A-6F08C301C652}|RegistrationForm.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Muzammil Bagewadi\\Desktop\\SRX_MCS-25\\DOT-NET_REMASTERED\\A3 REMASTERED\\RegistrationForm\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\Muzammil Bagewadi\\Desktop\\SRX_MCS-25\\DOT-NET_REMASTERED\\A3 REMASTERED\\RegistrationForm\\Form1.Designer.cs",
+              "RelativeToolTip": "Form1.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T13:35:30.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Muzammil Bagewadi\\Desktop\\SRX_MCS-25\\DOT-NET_REMASTERED\\A3 REMASTERED\\RegistrationForm\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\Muzammil Bagewadi\\Desktop\\SRX_MCS-25\\DOT-NET_REMASTERED\\A3 REMASTERED\\RegistrationForm\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAuwFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T13:06:26.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Muzammil Bagewadi\\Desktop\\SRX_MCS-25\\DOT-NET_REMASTERED\\A3 REMASTERED\\RegistrationForm\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\Muzammil Bagewadi\\Desktop\\SRX_MCS-25\\DOT-NET_REMASTERED\\A3 REMASTERED\\RegistrationForm\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T13:06:24.175Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

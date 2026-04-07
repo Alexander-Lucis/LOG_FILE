@@ -1,0 +1,10 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\StudentGradeCalculator\obj\Debug\StudentGradeCalculator.csproj.AssemblyReference.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\StudentGradeCalculator\obj\Debug\StudentGradeCalculator.Properties.Resources.resources
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\StudentGradeCalculator\obj\Debug\StudentGradeCalculator.csproj.GenerateResource.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\StudentGradeCalculator\obj\Debug\StudentGradeCalculator.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\StudentGradeCalculator\bin\Debug\StudentGradeCalculator.exe.config
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\StudentGradeCalculator\bin\Debug\StudentGradeCalculator.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\StudentGradeCalculator\bin\Debug\StudentGradeCalculator.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\StudentGradeCalculator\obj\Debug\StudentGradeCalculator.Form1.resources
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\StudentGradeCalculator\obj\Debug\StudentGradeCalculator.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A3 REMASTERED\StudentGradeCalculator\obj\Debug\StudentGradeCalculator.pdb
