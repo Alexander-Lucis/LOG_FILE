@@ -1,0 +1,57 @@
+Q1.Write an ASP.Net program that displays the names of some flowers in two columns. Bind a label to the RadioButtonList so that when the user selects an option from the list and clicks on a button, the label displays the flower selected by the user.
+
+FE (Default.aspx):
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="YourNamespace._Default" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Flower Selection</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2>Flower Selection</h2>
+            <table>
+                <tr>
+                    <td>
+                        <asp:RadioButtonList ID="rblFlowers" runat="server" RepeatDirection="Vertical">
+                            <asp:ListItem Text="Rose" Value="Rose" />
+                            <asp:ListItem Text="Lily" Value="Lily" />
+                            <asp:ListItem Text="Tulip" Value="Tulip" />
+                            <asp:ListItem Text="Daisy" Value="Daisy" />
+                        </asp:RadioButtonList>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Button ID="btnShowSelection" runat="server" Text="Show Selection" OnClick="btnShowSelection_Click" />
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <asp:Label ID="lblSelectedFlower" runat="server" Text=""></asp:Label>
+        </div>
+    </form>
+</body>
+</html> 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+BE (Default.aspx.cs): 
+using System;
+
+namespace FlowerSelectionApp
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        protected void btnShowSelection_Click(object sender, EventArgs e)
+        {
+            if (rblFlowers.SelectedIndex >= 0)
+            {
+                lblSelectedFlower.Text = $"You selected: {rblFlowers.SelectedValue}";
+            }
+            else
+            {
+                lblSelectedFlower.Text = "Please select a flower.";
+            }
+        }
+    }
+}
