@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\bin\Debug\net10.0\AgeEligibleCheck.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\bin\Debug\net10.0\AgeEligibleCheck.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\bin\Debug\net10.0\AgeEligibleCheck.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\bin\Debug\net10.0\AgeEligibleCheck.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\bin\Debug\net10.0\AgeEligibleCheck.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\obj\Debug\net10.0\AgeEligibleCheck.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\obj\Debug\net10.0\AgeEligibleCheck.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\obj\Debug\net10.0\AgeEligibleCheck.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\obj\Debug\net10.0\AgeEligibleCheck.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\obj\Debug\net10.0\AgeEligibleCheck.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\obj\Debug\net10.0\refint\AgeEligibleCheck.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\obj\Debug\net10.0\AgeEligibleCheck.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\obj\Debug\net10.0\AgeEligibleCheck.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AgeEligibleCheck\obj\Debug\net10.0\ref\AgeEligibleCheck.dll

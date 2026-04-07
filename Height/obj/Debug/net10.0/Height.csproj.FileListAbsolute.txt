@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\bin\Debug\net10.0\Height.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\bin\Debug\net10.0\Height.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\bin\Debug\net10.0\Height.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\bin\Debug\net10.0\Height.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\bin\Debug\net10.0\Height.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\obj\Debug\net10.0\Height.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\obj\Debug\net10.0\Height.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\obj\Debug\net10.0\Height.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\obj\Debug\net10.0\Height.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\obj\Debug\net10.0\Height.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\obj\Debug\net10.0\refint\Height.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\obj\Debug\net10.0\Height.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\obj\Debug\net10.0\Height.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Height\obj\Debug\net10.0\ref\Height.dll

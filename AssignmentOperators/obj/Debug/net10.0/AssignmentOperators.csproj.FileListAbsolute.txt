@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\bin\Debug\net10.0\AssignmentOperators.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\bin\Debug\net10.0\AssignmentOperators.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\bin\Debug\net10.0\AssignmentOperators.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\bin\Debug\net10.0\AssignmentOperators.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\bin\Debug\net10.0\AssignmentOperators.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\obj\Debug\net10.0\AssignmentOperators.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\obj\Debug\net10.0\AssignmentOperators.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\obj\Debug\net10.0\AssignmentOperators.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\obj\Debug\net10.0\AssignmentOperators.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\obj\Debug\net10.0\AssignmentOperators.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\obj\Debug\net10.0\refint\AssignmentOperators.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\obj\Debug\net10.0\AssignmentOperators.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\obj\Debug\net10.0\AssignmentOperators.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\AssignmentOperators\obj\Debug\net10.0\ref\AssignmentOperators.dll

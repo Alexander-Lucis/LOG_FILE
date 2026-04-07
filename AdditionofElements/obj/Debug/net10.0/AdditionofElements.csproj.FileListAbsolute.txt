@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\bin\Debug\net10.0\AdditionofElements.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\bin\Debug\net10.0\AdditionofElements.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\bin\Debug\net10.0\AdditionofElements.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\bin\Debug\net10.0\AdditionofElements.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\bin\Debug\net10.0\AdditionofElements.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\obj\Debug\net10.0\AdditionofElements.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\obj\Debug\net10.0\AdditionofElements.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\obj\Debug\net10.0\AdditionofElements.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\obj\Debug\net10.0\AdditionofElements.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\obj\Debug\net10.0\AdditionofElements.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\obj\Debug\net10.0\refint\AdditionofElements.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\obj\Debug\net10.0\AdditionofElements.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\obj\Debug\net10.0\AdditionofElements.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\AdditionofElements\obj\Debug\net10.0\ref\AdditionofElements.dll

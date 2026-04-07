@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\bin\Debug\net10.0\RectangleArea.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\bin\Debug\net10.0\RectangleArea.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\bin\Debug\net10.0\RectangleArea.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\bin\Debug\net10.0\RectangleArea.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\bin\Debug\net10.0\RectangleArea.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\obj\Debug\net10.0\RectangleArea.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\obj\Debug\net10.0\RectangleArea.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\obj\Debug\net10.0\RectangleArea.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\obj\Debug\net10.0\RectangleArea.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\obj\Debug\net10.0\RectangleArea.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\obj\Debug\net10.0\refint\RectangleArea.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\obj\Debug\net10.0\RectangleArea.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\obj\Debug\net10.0\RectangleArea.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\RectangleArea\obj\Debug\net10.0\ref\RectangleArea.dll

@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\bin\Debug\net10.0\Weekdays.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\bin\Debug\net10.0\Weekdays.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\bin\Debug\net10.0\Weekdays.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\bin\Debug\net10.0\Weekdays.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\bin\Debug\net10.0\Weekdays.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\obj\Debug\net10.0\Weekdays.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\obj\Debug\net10.0\Weekdays.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\obj\Debug\net10.0\Weekdays.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\obj\Debug\net10.0\Weekdays.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\obj\Debug\net10.0\Weekdays.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\obj\Debug\net10.0\refint\Weekdays.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\obj\Debug\net10.0\Weekdays.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\obj\Debug\net10.0\Weekdays.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A1 REMASTERED\Weekdays\obj\Debug\net10.0\ref\Weekdays.dll
