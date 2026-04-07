@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\bin\Debug\net10.0\Vehicle.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\bin\Debug\net10.0\Vehicle.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\bin\Debug\net10.0\Vehicle.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\bin\Debug\net10.0\Vehicle.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\bin\Debug\net10.0\Vehicle.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\obj\Debug\net10.0\Vehicle.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\obj\Debug\net10.0\Vehicle.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\obj\Debug\net10.0\Vehicle.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\obj\Debug\net10.0\Vehicle.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\obj\Debug\net10.0\Vehicle.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\obj\Debug\net10.0\refint\Vehicle.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\obj\Debug\net10.0\Vehicle.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\obj\Debug\net10.0\Vehicle.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\Vehicle\obj\Debug\net10.0\ref\Vehicle.dll

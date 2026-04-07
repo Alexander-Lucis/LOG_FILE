@@ -1,0 +1,14 @@
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\bin\Debug\net10.0\RectangleDisplay.exe
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\bin\Debug\net10.0\RectangleDisplay.deps.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\bin\Debug\net10.0\RectangleDisplay.runtimeconfig.json
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\bin\Debug\net10.0\RectangleDisplay.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\bin\Debug\net10.0\RectangleDisplay.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\obj\Debug\net10.0\RectangleDisplay.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\obj\Debug\net10.0\RectangleDisplay.AssemblyInfoInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\obj\Debug\net10.0\RectangleDisplay.AssemblyInfo.cs
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\obj\Debug\net10.0\RectangleDisplay.csproj.CoreCompileInputs.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\obj\Debug\net10.0\RectangleDisplay.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\obj\Debug\net10.0\refint\RectangleDisplay.dll
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\obj\Debug\net10.0\RectangleDisplay.pdb
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\obj\Debug\net10.0\RectangleDisplay.genruntimeconfig.cache
+C:\Users\Muzammil Bagewadi\Desktop\SRX_MCS-25\DOT-NET_REMASTERED\A2 REMASTERED\RectangleDisplay\obj\Debug\net10.0\ref\RectangleDisplay.dll
