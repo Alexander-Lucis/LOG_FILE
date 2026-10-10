@@ -1,0 +1,12 @@
+DOCKERFILE:
+FROM jenkins/jenkins:lts
+USER root
+RUN apt update && apt install -y docker.io && rm -rf /var/lib/apt/lists/*
+USER jenkins 
+
+sudo su
+docker build -t jenkins-with-docker:lts .
+
+ps -a
+docker ps
+docker rm (CONTAINER ID)

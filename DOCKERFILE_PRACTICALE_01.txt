@@ -1,0 +1,16 @@
+DOCKERFILE:
+FROM node:22-alpine      /// (For Python: FROM python:13-alpine )
+WORKDIR /app
+COPY package*.json ./
+COPY . .
+RUN npm i
+EXPOSE 3000
+CMD ["npm","start"]
+---------------------
+
+docker build -t myapp .
+
+docker run -p 3000:3000 myapp
+
+
+
