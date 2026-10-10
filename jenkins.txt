@@ -1,0 +1,191 @@
+## Jenkins Setup (Before J1–J4)
+
+1\. Start Jenkins — run in PowerShell:
+
+```
+docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+```
+
+2\. Open Jenkins
+
+Go to: [http://localhost:8080](http://localhost:8080)
+
+3\. Unlock Jenkins
+
+```
+docker logs jenkins
+```
+
+Copy the initial admin password from the logs and paste it into the Jenkins page.
+
+4\. Complete setup
+
+- Select Install suggested plugins.
+- Create your admin user.
+- Open the Jenkins dashboard.
+
+5\. Install required plugins
+
+Go to Manage Jenkins → Plugins and ensure Pipeline, Git, and Email Extension are installed.
+
+6\. Prepare for practicals
+
+- Have your GitHub repository URL ready.
+- Ensure Node.js/npm and Python/pip are available in the Jenkins build environment.
+- For J4, configure SMTP under Manage Jenkins → System → Extended E-mail Notification.
+
+Now: Open Jenkins → New Item → Pipeline → enter the practical's name → select Pipeline script → paste J1/J2/J3/J4 code → Save → Build Now.
+
+
+
+
+
+
+# Jenkins Practical Questions and Solutions
+
+Based on your uploaded DevOps practical PDF.&#x20;
+
+Exam-Solutions(2).pdf
+
+
+
+## J1. Check out code from GitHub and start a Node app (15 Marks)
+
+Solution:
+
+```
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/<your-username>/<your-node-repo>.git'
+            }
+        }
+        stage('Install') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Start App') {
+            steps {
+                withEnv(['BUILD_ID=dontKillMe',
+                         'JENKINS_NODE_COOKIE=dontKillMe']) {
+                    sh 'nohup node server.js > app.log 2>&1 &'
+                }
+                sh 'sleep 3 && curl -s http://localhost:3000'
+            }
+        }
+    }
+}
+```
+
+## J2. Create a GitHub Jenkins pipeline to install Node.js project dependencies (25 Marks)
+
+Solution:
+
+```
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/<your-username>/<your-node-repo>.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'node --version'
+                sh 'npm --version'
+                sh 'npm install'
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Dependencies installed successfully'
+        }
+        failure {
+            echo 'Dependency installation failed'
+        }
+    }
+}
+```
+
+## J3. Create a GitHub Jenkins pipeline to start a Node application (25 Marks)
+
+Solution:
+
+```
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/<your-username>/<your-node-repo>.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Start Application') {
+            steps {
+                withEnv(['BUILD_ID=dontKillMe',
+                         'JENKINS_NODE_COOKIE=dontKillMe']) {
+                    sh 'nohup npm start > app.log 2>&1 &'
+                }
+                sh 'sleep 3'
+                sh 'cat app.log'
+                sh 'curl -s http://localhost:3000 || echo "App not reachable"'
+            }
+        }
+    }
+}
+```
+
+## J4. Create a GitHub Jenkins pipeline for a Python project to send reports by email (25 Marks)
+
+Solution:
+
+```
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/<your-username>/<your-python-repo>.git'
+            }
+        }
+        stage('Install') {
+            steps {
+                sh 'python3 -m venv venv'
+                sh '. venv/bin/activate && pip install -r requirements.txt pytest'
+            }
+        }
+        stage('Test & Report') {
+            steps {
+                sh '. venv/bin/activate && pytest --junitxml=report.xml || true'
+            }
+        }
+    }
+    post {
+        always {
+            junit 'report.xml'
+            emailext(
+                subject: "Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+                body: "Test report attached.\nBuild URL: ${env.BUILD_URL}",
+                to: 'you@example.com',
+                attachmentsPattern: 'report.xml'
+            )
+        }
+    }
+}
+```
+
+Note: Replace the example GitHub URLs and email address with your own. Node.js/npm and Python must be available on the Jenkins machine. J4 also requires the Email Extension plugin and SMTP configuration.
