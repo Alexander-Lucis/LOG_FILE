@@ -1,0 +1,55 @@
+<!--
+=============================================================================
+Topic: 1. HTML & JavaScript
+Question 1: Student Registration Form Validation
+Question: Create a student registration form and validate first name, last name, mobile number, and email address using JavaScript.
+=============================================================================
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration</title>
+  <script>
+    function validateForm() {
+      var fname = document.getElementById("fname").value;
+      var lname = document.getElementById("lname").value;
+      var age = document.getElementById("age").value;
+      var namePattern = /^[A-Za-z]+$/;
+
+      if (!namePattern.test(fname)) {
+        alert("First name must contain only letters.");
+        return false;
+      }
+      if (!namePattern.test(lname)) {
+        alert("Last name must contain only letters.");
+        return false;
+      }
+      if (age < 18 || age > 50) {
+        alert("Age must be between 18 and 50.");
+        return false;
+      }
+      alert("Registration successful!");
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h2>Student Registration</h2>
+  <form onsubmit="return validateForm()">
+    First Name: <input type="text" id="fname"><br><br>
+    Last Name: <input type="text" id="lname"><br><br>
+    Age: <input type="number" id="age"><br><br>
+    Contact: <input type="text" id="contact"><br><br>
+    Gender:
+    <input type="radio" name="gender"> Male
+    <input type="radio" name="gender"> Female<br><br>
+    Course:
+    <select>
+      <option>BCS</option><option>BCA</option><option>BBA</option>
+    </select><br><br>
+    <input type="submit" value="Register">
+    <input type="reset" value="Reset">
+  </form>
+</body>
+</html>
