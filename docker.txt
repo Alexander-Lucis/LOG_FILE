@@ -1,0 +1,218 @@
+
+# ==============================================================================
+# D1: CREATE AND BUILD A NODE.JS DOCKER IMAGE
+# ==============================================================================
+ **********dockerfile:***********
+ FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000 
+CMD ["node","server.js"]
+
+*********** server.js:**************
+ const http = require('http');
+http.createServer((req, res) => {
+    res.end('Hello from Node.js server running in Docker!');
+}).listen(3000, '0.0.0.0',() => {
+    console.log( 'Server is running on port 3000')
+});
+
+Objective:
+• Set up the project directory and build a custom Docker image.
+
+Steps:
+• Step 1: cd E:\DevOps-Practical\dockerNode
+  Work: Open the project folder in the terminal.
+
+• Step 2: npm init -y
+  Work: Create package.json automatically. Run only if it doesn't already exist.
+
+• Step 3: docker build -t node-app .
+  Work: Build a Docker image named 'node-app'.
+
+• Step 4: docker images
+  Work: List downloaded and built images.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ==============================================================================
+# D2: RUN NODE.JS CONTAINER AND ACCESS IT
+# ==============================================================================
+
+Objective:
+• Run the Node.js application inside a container and verify connectivity.
+
+Steps:
+• Step 1: docker run -d --name node-app -p 3000:3000 node-app
+  Work: Create and run the container in the background.
+
+• Step 2: docker ps
+  Work: Show running containers.
+
+• Step 3: docker ps -a
+  Work: Show all containers, including stopped ones.
+
+• Step 4: docker logs node-app
+  Work: Display the container's logs.
+
+
+Verification:
+• Browser URL : http://localhost:3000
+• Expected    : "Hello from Node.js server running in Docker!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ==============================================================================
+# D3: PULL AND RUN A DOCKER HUB IMAGE
+# ==============================================================================
+
+Objective:
+• Pull a pre-built Nginx image from Docker Hub and run a web server.
+
+Steps:
+• Step 1: docker pull nginx:alpine
+  Work: Download the Nginx image from Docker Hub.
+
+• Step 2: docker images
+  Work: Verify that the image is downloaded.
+
+• Step 3: docker run -d --name web -p 8080:80 nginx:alpine
+  Work: Create and run the Nginx container.
+
+• Step 4: docker ps
+  Work: Verify that the container is running and check its ports.
+
+Key Flags:
+• nginx:alpine : Specifies image and tag (Alpine Linux base is lightweight)
+• -p 8080:80   : Maps host port 8080 to container's internal HTTP port 80
+
+Verification:
+• Browser URL : http://localhost:8080
+• Expected    : "Welcome to nginx!" default page
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ==============================================================================
+# D4: EXECUTE, REMOVE CONTAINERS AND REMOVE IMAGES
+# ==============================================================================
+
+Objective:
+• Run commands inside a container, stop containers, and clean up resources.
+
+Steps:
+• Step 1: docker exec -it web sh
+  Work: Open an interactive shell inside the running container.
+
+• Step 2: ls /usr/share/nginx/html
+  Work: List Nginx website files from inside the container.
+
+• Step 3: exit
+  Work: Exit the container shell.
+
+• Step 4: docker exec web nginx -v
+  Work: Display the Nginx version.
+
+• Step 5: docker stop web
+  Work: Stop the Nginx container.
+
+• Step 6: docker rm web
+  Work: Remove the stopped container.
+
+• Step 7: docker rmi nginx:alpine
+  Work: Remove the Nginx image, if no container is using it.
+
+• Step 8: docker images
+  Work: Verify that the Nginx image is removed.
+
+Key Flags:
+• exec : Runs a command inside an already running container
+• -it  : Interactive mode (-i keeps STDIN open, -t allocates pseudo-TTY)
+• rm   : Removes a stopped container
+• rmi  : Removes a Docker image from local storage
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ==============================================================================
+# IMPORTANT COMMANDS TO REMEMBER 
+# ==============================================================================
+
+• docker build   : Build an image
+• docker pull    : Download an image
+• docker run     : Create and start a container
+• docker ps      : List running containers
+• docker ps -a   : List all containers (running and stopped)
+• docker logs    : View container logs
+• docker exec    : Execute a command inside a running container
+• docker stop    : Stop a container
+• docker rm      : Remove a container
+• docker rmi     : Remove an image
+• docker images  : List images

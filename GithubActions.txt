@@ -1,0 +1,387 @@
+# GitHub Actions — Questions and Solutions
+
+Got it bro 😎 Short theory, complete commands and code, step by step.
+
+# A1. Run Node.js tests on every push to `main`
+
+### Step 1: Create project
+
+```
+cd E:\DevOps-Practical\githubActions
+npm init -y
+npm pkg set "scripts.test=node --test"
+npm install
+```
+
+### Step 2: Create `test.js`
+
+```
+notepad test.js
+```
+
+Paste and save:
+
+```
+const test = require('node:test');
+const assert = require('node:assert');
+
+test('Addition test', () => {
+    assert.strictEqual(1 + 1, 2);
+});
+```
+
+### Step 3: Create workflow file
+
+```
+mkdir .github\workflows
+notepad .github\workflows\node-test.yml
+```
+
+Paste and save:
+
+```
+name: Node.js Tests
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm test
+```
+
+### Step 4: Test locally
+
+```
+npm test
+```
+
+### Step 5: Push to GitHub
+
+```
+git add .
+git commit -m "Add Node.js tests workflow"
+git push
+```
+
+If the folders already exist, skip `mkdir`. If there is nothing to commit, just run `git push`.
+
+### Step 6: Verify
+
+Open GitHub repository → Actions → check the latest workflow run.
+
+Result: Tests run automatically on every push to `main`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# A2. Python Project — Clean Package
+
+### Step 1: Create `setup.py`
+
+```
+notepad setup.py
+```
+
+```
+from setuptools import setupsetup(    name="mypkg",    version="0.1.0",    py_modules=["hello"],)
+```
+
+Save the file.
+
+### Step 2: Create `hello.py`
+
+```
+notepad hello.py
+```
+
+```
+def hello():    return "Hello World"
+```
+
+Save the file.
+
+### Step 3: Create the GitHub Actions workflow
+
+```
+notepad .github\workflows\python-package.yml
+```
+
+Paste:
+
+```
+name: Python Clean Package
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  clean-package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install build tool
+        run: pip install build setuptools
+
+      - name: Clean old build output
+        run: rm -rf build/ dist/ *.egg-info
+
+      - name: Build package
+        run: python -m build
+
+      - name: Show built package
+        run: ls -l dist/
+```
+
+### Step 4: Push to GitHub
+
+```
+git add .
+git commit -m "Add Python clean package"
+git push
+```
+
+### Step 5: Verify
+
+GitHub → Actions → Python Clean Package.
+
+Expected files in `dist/`:
+
+```
+mypkg-0.1.0.tar.gz
+mypkg-0.1.0-py3-none-any.whl
+```
+
+Result: Removes old build files and builds a fresh Python package on every push to `main`.
+
+
+
+
+
+
+
+
+
+# A3. Python Project — Run JUnit Tests and Generate a Report
+
+### Step 1: Create the test file
+
+```
+notepad test_app.py
+```
+
+Paste and save:
+
+```
+def add(a, b):    return a + bdef test_add():    assert add(2, 3) == 5
+```
+
+### Step 2: Create the GitHub Actions workflow
+
+```
+notepad .github\workflows\python-tests.yml
+```
+
+Paste and save:
+
+```
+name: Python JUnit Tests
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pytest
+        run: pip install pytest
+
+      - name: Run tests and generate JUnit report
+        run: pytest --junitxml=report.xml
+
+      - name: Upload JUnit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-report
+          path: report.xml
+```
+
+### Step 3: Push to GitHub
+
+```
+git add .
+git commit -m "Add Python JUnit test workflow"
+git push
+```
+
+### Step 4: Download the report
+
+1. Open GitHub → Actions.
+2. Select Python JUnit Tests.
+3. Open the latest workflow run.
+4. Under Artifacts, download `junit-report.zip`.
+5. Extract it and open `report.xml`.
+
+### Step 5: Verify the result
+
+Your report should show:
+
+- Tests: `1`
+- Failures: `0`
+- Errors: `0`
+- Skipped: `0`
+
+Result: Python tests run automatically on every push to `main`, and a JUnit XML report is generated and uploaded as an artifact.
+
+
+
+
+
+
+
+
+
+# A4. Node.js ESLint and Upload Report
+
+### Step 1: Install ESLint
+
+```
+cd E:\DevOps-Practical\githubActions
+npm install --save-dev eslint
+```
+
+### Step 2: Create `eslint.config.js`
+
+```
+notepad eslint.config.js
+```
+
+Paste and save:
+
+```
+export default [
+  {
+    files: ["**/*.js"],
+    languageOptions: {
+      globals: {
+        require: "readonly"
+      }
+    },
+    rules: {
+      "no-unused-vars": "warn",
+      "no-undef": "error"
+    }
+  }
+];
+```
+
+### Step 3: Create the workflow
+
+```
+notepad .github\workflows\eslint.yml
+```
+
+Paste and save:
+
+```
+name: Node.js ESLint
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Run ESLint and create report
+        run: npx eslint . --no-warn-ignored > lint-report.txt
+
+      - name: Upload lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: lint-report.txt
+```
+
+### Step 4: Create `.gitignore`
+
+```
+notepad .gitignore
+```
+
+Add and save:
+
+```
+node_modules/
+```
+
+### Step 5: Push to GitHub
+
+```
+git add .
+git commit -m "Add ESLint workflow"
+git push
+```
+
+### Step 6: Verify
+
+Open GitHub → Actions → Node.js ESLint → open the latest run.
+
+Check for a green tick. Download `lint-report` from the Artifacts section to view `lint-report.txt`.
+
+Result: ESLint checks JavaScript files, generates a lint report, and uploads the report as a GitHub Actions artifact.

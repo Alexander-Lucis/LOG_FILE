@@ -1,0 +1,276 @@
+**********************************
+docker compose**************************
+**********************************
+docker-compose.yaml:
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-server
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: appdb
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+
+## C1 — MySQL Server
+
+### Main steps and commands
+
+
+Step 1: Run `cd E:\DevOps-Practical\Compose-MYSQL` to enter the project folder.
+
+Step 2: Run `docker compose up -d` to create and start the MySQL service in the background.
+
+Step 3: Run `docker compose ps` to check the status of the Compose service.
+
+Step 4: Run `docker exec -it mysql-server mysql -uroot -prootpass -e "SHOW DATABASES;"` to log in as root and list the databases, verifying that `appdb` exists.
+
+Step 5: Run `docker compose down` to stop and remove the container and Compose network. The named volume and its data are preserved.
+
+
+
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**********************&************************************
+MySQL user creation, using `MYSQL_USER` and `MYSQL_PASSWORD` in the Compose file.
+************************************************************
+**yamlfile**
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-user-server
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: appdb
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_user_data:/var/lib/mysql
+
+volumes:
+  mysql_user_data:
+
+
+ — Main Steps and Commands
+Step 1: Run cd E:\DevOps-Practical\Compose-MySQL-User to enter the project folder.
+
+Step 2: Create a docker-compose.yml file with MYSQL_ROOT_PASSWORD, MYSQL_DATABASE, MYSQL_USER, and 
+MYSQL_PASSWORD under environment to configure the root account, database, and new MySQL user.
+Step 3: Run docker compose up -d to create and start the MySQL service in the background
+.
+Step 4: Run docker compose ps to verify that the MySQL container is running.
+
+///Step 5: Run docker exec -it mysql-user-server mysql -uroot -prootpass -e "SELECT User, Host FROM mysql.user;" to verify that appuser was created.///
+
+Step 5: Run docker exec -it mysql-user-server mysql -uappuser -papppass -e "SHOW DATABASES;    to test the new user's login and database access.
+
+Step 6: Run docker compose down to stop and remove the container and network while preserving the named volume.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*******************************************
+## C3 — PostgreSQL Using Dockerfile: Revision Notes
+**********************************************
+
+Step 1: Run `cd E:\DevOps-Practical\Docker-PostgreSQL` to enter the project folder.
+
+Step 2: Create a file named `Dockerfile` and add the following configuration:
+ **dockerfile**
+```
+FROM postgres:16
+ENV POSTGRES_USER=appuser
+ENV POSTGRES_PASSWORD=apppass
+ENV POSTGRES_DB=appdb
+EXPOSE 5432
+```
+
+Step 3: Run `docker build -t my-postgres .` to build the PostgreSQL image using the Dockerfile.
+
+Step 4: Run `docker run -d --name postgres-db -p 5433:5432 my-postgres` to create and start the container in the background.
+
+Step 5: Run `docker ps` to verify that the PostgreSQL container is running and the port mapping is correct.
+
+Step 6: Run `docker exec -it postgres-db psql -U appuser -d appdb -c "SELECT current_user, current_database();"` to verify the database connection and confirm the current user and database.
+
+Step 7: Run `docker stop postgres-db` to stop the PostgreSQL container.
+
+Step 8: Run `docker rm postgres-db` to remove the stopped container.
+
+Step 9: Run `docker images` to verify that the `my-postgres` image still exists.
+
+*****************************************************
+- PostgresCompose  —  Main Steps and Commands
+****************************************************
+docker-compose.yaml
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres-server
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: apppass
+      POSTGRES_DB: appdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+
+
+Step 1: Run cd E:\DevOps-Practical\Compose-PostgreSQL to enter the project folder.
+Step 2: Create a docker-compose.yml file with the PostgreSQL image, environment variables, port mapping, and named volume.
+Step 3: Run docker compose up -d `to create and start the PostgreSQL service in the background.
+Step 4: Run docker compose ps` to verify that the PostgreSQL container is running.
+Step 5: Run docker exec -it postgres-server psql -U appuser -d appdb -c "SELECT current_user, current_database();" to verify the database connection and confirm the current user and database.
+Step 6: Run docker exec -it postgres-server psql -U appuser -d appdb -c "\l" ` to list the available databases.
+Step 7: Run docker compose down` to stop and remove the container and network while preserving the named volume.
+
+
+
+**************************************************************************
+C4 — Application + PostgreSQL using Docker Compose: Main Steps and Commands****************************
+*********************************************************************
+*server.js*
+
+const express = require("express");
+const { Pool } = require("pg");
+
+const app = express();
+
+const pool = new Pool({
+  host: process.env.DB_HOST || "postgres",
+  port: 5432,
+  user: process.env.DB_USER || "appuser",
+  password: process.env.DB_PASSWORD || "apppass",
+  database: process.env.DB_NAME || "appdb"
+});
+
+app.get("/", async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT current_database(), current_user"
+    );
+
+    res.send(
+      `Application connected to PostgreSQL! Database: ${result.rows[0].current_database}, User: ${result.rows[0].current_user}`
+    );
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Database connection failed");
+  }
+});
+
+app.listen(3000, "0.0.0.0", () => {
+  console.log("Application running on port 3000");
+});
+
+
+**dockerfile**
+
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY server.js .
+EXPOSE 3000
+CMD ["node", "server.js"]
+
+**docker-compose.yml***
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: app-postgres
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: apppass
+      POSTGRES_DB: appdb
+    ports:
+      - "5434:5432"
+    volumes:
+      - app_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appuser -d appdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+**docker-compose-yml**
+  app:
+    build: .
+    container_name: node-postgres-app
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: postgres
+      DB_USER: appuser
+      DB_PASSWORD: apppass
+      DB_NAME: appdb
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  app_postgres_data:
+
+
+
+Step 1: Run cd E:\DevOps-Practical\Compose-App-PostgreSQL to enter the project folder.
+Step 2: Run npm init -y to initialize the Node.js project.
+Step 3: Run npm install express pg to install Express and the PostgreSQL client library.
+Step 4: Create server.js to build the application and connect it to PostgreSQL using the pg library.
+Step 5: Create a Dockerfile to define how the Node.js application image is built.
+Step 6: Create docker-compose.yml to configure the application and PostgreSQL services, environment variables, ports, health check, and persistent volume.
+Step 7: Run ``docker compose up -d --build`` to build the application image and start both services.
+Step 8: Run `docker compose ps` to verify that the PostgreSQL service is healthy and the application is running.
+Step 9: Open http://localhost:3000 in a browser to test the application and its database connection.
+Step 10: Run `docker compose logs app` to inspect the application logs.
+Step 11: Run `docker compose down` to stop and remove the containers and network while preserving the database volume.

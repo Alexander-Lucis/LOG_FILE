@@ -1,0 +1,618 @@
+# DevOps Practical — Shell Scripting Solutions (S1–S13)
+
+
+
+
+## Part 1: Basic setup — do this first
+
+Your terminal should look something like:
+
+```
+```
+
+That means you're inside Ubuntu. Run these commands one by one.
+
+1\. Create a folder for your practicals
+
+```
+mkdir -p ~/DevOps-Practical/Shell
+```
+
+2\. Enter the folder
+
+```
+cd ~/DevOps-Practical/Shell
+```
+
+3\. Check your current location
+
+```
+pwd
+```
+
+It should show a path similar to:
+
+```
+/home/dsdsdsd/DevOps-Practical/Shell
+```
+
+## How to create, save and execute each program
+
+We'll use the `nano` terminal editor.
+
+For example, to create the factorial program:
+
+```
+nano s1.sh
+```
+
+Paste the program, then save and exit:
+
+1. Press Ctrl + O to save.
+2. Press Enter to confirm the filename.
+3. Press Ctrl + X to exit.
+
+Execute it directly:
+
+```
+bash s1.sh
+```
+
+Remember: Save every program in the same folder, using the filename specified below. You don't need `chmod +x` when running scripts with `bash filename.sh`.
+
+## Part 2: All Shell programs with solutions
+
+### S1. Factorial of a number
+
+Save as: `s1.sh`
+
+Create the file with `nano s1.sh`, paste:
+
+```
+#!/bin/bash
+read -p "Enter a number: " n
+
+fact=1
+for ((i=2; i<=n; i++))
+do
+    fact=$((fact * i))
+done
+
+echo "Factorial = $fact"
+```
+
+Run:
+
+```
+bash s1.sh
+```
+
+Example: input `5` → output `Factorial = 120`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### S2. Check whether a number is perfect
+
+Save as: `s2.sh`
+
+```
+#!/bin/bash
+read -p "Enter a number: " n
+
+sum=0
+for ((i=1; i<n; i++))
+do
+    if ((n % i == 0)); then
+        sum=$((sum + i))
+    fi
+done
+
+if ((sum == n && n > 0)); then
+    echo "Perfect number"
+else
+    echo "Not a perfect number"
+fi
+```
+
+Run:
+
+```
+bash s2.sh
+```
+
+Example: input `6` → output `Perfect number`
+
+
+
+
+
+
+
+
+
+
+
+
+
+### S3. Count lines and words in a file
+
+Save as: `s3.sh`
+
+```
+#!/bin/bash
+read -p "Enter filename: " file
+
+if [ -f "$file" ]; then
+    echo "Lines: $(wc -l < "$file")"
+    echo "Words: $(wc -w < "$file")"
+else
+    echo "File not found"
+fi
+```
+
+Run:
+
+```
+bash s3.sh
+```
+
+Enter a filename when prompted. If the file is in the current folder, enter its name, such as `sample.txt`.
+
+To create a test file:
+
+```
+echo -e "Hello world\nWelcome to Linux" > sample.txt
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### S4. Count words, lines and characters using a command-line argument
+
+Save as: `s4.sh`
+
+```
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 filename"
+    exit 1
+fi
+
+file="$1"
+
+if [ -f "$file" ]; then
+    echo "Lines: $(wc -l < "$file")"
+    echo "Words: $(wc -w < "$file")"
+    echo "Characters: $(wc -m < "$file")"
+else
+    echo "File not found"
+fi
+```
+
+Run it by providing the filename after the script name:
+
+```
+bash s4.sh sample.txt
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### S5. Print the pattern `0`, `0 1`, `0 1 2`, `0 1 2 3`
+
+Save as: `s5.sh`
+
+```
+#!/bin/bash
+
+for ((i=0; i<4; i++))
+do
+    for ((j=0; j<=i; j++))
+    do
+        echo -n "$j "
+    done
+    echo
+done
+```
+
+Run:
+
+```
+bash s5.sh
+```
+
+Output:
+
+```
+0
+0 1
+0 1 2
+0 1 2 3
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+### S6. Print Pascal's triangle
+
+Save as: `s6.sh`
+
+```
+#!/bin/bash
+
+for ((i=0; i<5; i++))
+do
+    c=1
+    for ((j=0; j<=i; j++))
+    do
+        echo -n "$c "
+        c=$((c * (i - j) / (j + 1)))
+    done
+    echo
+done
+```
+
+Run:
+
+
+```
+bash s6.sh
+```
+
+Output:
+
+```
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
+```
+
+
+
+
+### S7. Delete all empty lines from a file
+
+Save as: `s7.sh`
+
+```
+#!/bin/bash
+read -p "Enter filename: " file
+
+if [ -f "$file" ]; then
+    sed -i '/^[[:space:]]*$/d' "$file"
+    cat "$file"
+else
+    echo "File not found"
+fi
+```
+
+Run:
+
+```
+bash s7.sh
+```
+
+Enter the filename when prompted.
+
+Warning: This modifies the original file. Practise on a copy of a sample file.
+
+
+
+
+
+### S8. Reverse a string
+
+Save as: `s8.sh`
+
+```
+#!/bin/bash
+read -p "Enter a string: " str
+
+rev=""
+for ((i=${#str}-1; i>=0; i--))
+do
+    rev="$rev${str:i:1}"
+done
+
+echo "Reverse: $rev"
+```
+
+Run:
+
+```
+bash s8.sh
+```
+
+Example: input `hello` → output `olleh`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### S9. Find the maximum of three numbers
+
+Save as: `s9.sh`
+
+```
+#!/bin/bash
+read -p "Enter three numbers: " a b c
+
+if ((a >= b && a >= c)); then
+    max=$a
+elif ((b >= a && b >= c)); then
+    max=$b
+else
+    max=$c
+fi
+
+echo "Maximum = $max"
+```
+
+Run:
+
+```
+bash s9.sh
+```
+
+Example: input `10 25 15` → output `Maximum = 25`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### S10. Reverse array elements
+
+Save as: `s10.sh`
+
+```
+#!/bin/bash
+
+arr=(10 20 30 40 50)
+rev=()
+
+for ((i=${#arr[@]}-1; i>=0; i--))
+do
+    rev+=("${arr[i]}")
+done
+
+echo "Original: ${arr[@]}"
+echo "Reverse: ${rev[@]}"
+```
+
+Run:
+
+```
+bash s10.sh
+```
+
+Output:
+
+```
+Original: 10 20 30 40 50
+Reverse: 50 40 30 20 10
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### S11. Delete all text files from a directory
+
+Save as: `s11.sh`
+
+```
+#!/bin/bash
+read -p "Enter directory: " dir
+
+if [ -d "$dir" ]; then
+    rm -f "$dir"/*.txt
+    echo "Text files deleted"
+else
+    echo "Directory not found"
+fi
+```
+
+Run:
+
+```
+bash s11.sh
+```
+
+Enter a directory path when prompted.
+
+Warning: This permanently deletes `.txt` files in that directory. Use a test directory containing only disposable files.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### S12. Compile C files and delete those with compilation errors
+
+Save as: `s12.sh`
+
+```
+#!/bin/bash
+
+for file in *.c
+do
+    [ -e "$file" ] || continue
+
+    if gcc "$file" -o "${file%.c}.out"; then
+        echo "$file compiled successfully"
+    else
+        echo "Error in $file; deleting source file"
+        rm "$file"
+    fi
+done
+```
+
+Run:
+
+```
+bash s12.sh
+```
+
+This requires GCC to be installed. If needed, install it in Ubuntu:
+
+```
+sudo apt update
+sudo apt install build-essential
+```
+
+Warning: This script deletes C source files that fail compilation. Test only on copies of your files.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### S13. Demonstrate pipe commands and change the system date
+
+Save as: `s13.sh`
+
+```
+#!/bin/bash
+
+echo "--- Pipe demo ---"
+ls -l | wc -l
+ps aux | grep bash | head -3
+cat /etc/passwd | cut -d: -f1 | sort | head -5
+
+echo "--- Date demo ---"
+echo "Current date: $(date)"
+
+# Uncomment only if the practical explicitly requires changing the date:
+# sudo date -s "2026-12-25 10:30:00"
+
+echo "Current date: $(date)"
+```
+
+Run:
+
+```
+bash s13.sh
+```

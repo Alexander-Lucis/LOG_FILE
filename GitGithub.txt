@@ -1,0 +1,156 @@
+# 2. Git & GitHub — Questions and Solutions
+
+## G1. Clone a public repository and pull files (15 Marks)
+
+Solution:
+
+```
+git clone https://github.com/octocat/Hello-World.git
+cd Hello-World
+git pull
+git log --oneline | head -3
+```
+
+
+
+### G2: Git Tags
+
+Step 1
+
+```
+cd E:\DevOps-Practical\githubActions
+```
+
+Step 2
+
+```
+git tag exam-result
+```
+
+Step 3
+
+```
+git tag -a final-result -m "Final exam result"
+```
+
+Step 4
+
+```
+git tag
+```
+
+Step 5
+
+```
+git push origin exam-result final-result
+```
+
+
+
+
+
+## G3. Run any four GitHub commands and print the logs (15 Marks)
+
+Solution:
+
+```
+git status -sb
+git branch
+git log --oneline
+git diff HEAD~1 --stat
+```
+
+To save the log to a file:
+
+```
+git log > git_log.txt
+
+```
+
+
+
+
+
+
+
+## G4: Create a GitHub Webhook Using ngrok
+
+Step 1: Open project folder
+
+```
+cd E:\DevOps-Practical\githubActions
+```
+
+Step 2: Create `webhook_server.js`
+
+```
+notepad webhook_server.js
+```
+
+Paste and save:
+
+```
+const http = require('http');
+
+http.createServer((req, res) => {
+    console.log("GitHub event received!");
+    res.end("OK");
+}).listen(3000, () => {
+    console.log("Server running on port 3000");
+});
+```
+
+Step 3: Start Node.js server
+
+```
+node webhook_server.js
+```
+
+Step 4: Install ngrok
+
+Download: [ngrok download](https://ngrok.com/download)
+
+Create account: [ngrok signup](https://dashboard.ngrok.com/signup)
+
+Get token: [ngrok authtoken](https://dashboard.ngrok.com/get-started/your-authtoken)
+
+Step 5: Configure ngrok (in a second PowerShell window)
+
+```
+ngrok config add-authtoken YOUR_TOKEN
+```
+
+Step 6: Start ngrok
+
+```
+ngrok http 3000
+```
+
+Copy the HTTPS forwarding URL.
+
+Step 7: Configure GitHub
+
+Repository → Settings → Webhooks → Add webhook
+
+- Payload URL: `https://your-ngrok-url`
+- Content type: `application/json`
+- Event: Just the push event
+- Click Add webhook.
+
+Step 8: Trigger the webhook (in a third PowerShell window)
+
+```
+cd E:\DevOps-Practical\githubActions
+git add .
+git commit -m "Test webhook"
+git push origin main
+```
+
+Expected output
+
+```
+Server running on port 3000
+GitHub event received!
+```
+
+Result: GitHub webhook triggered successfully.
