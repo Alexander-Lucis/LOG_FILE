@@ -1,0 +1,34 @@
+DOCKER-COMPOSE YAML:
+services:
+  myapp:
+    build: ./myapp
+    container_name: myapp
+    ports:
+      - "3000:3000"
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL-DATABASE: empdb
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:        
+--------------------
+
+docker compose build myapp
+
+docker compose up myapp
+
+docker compose build mysql
+
+docker compose up mysql
+
+

@@ -1,0 +1,43 @@
+sudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -v /home/admin1/Desktop/SRX_MCS-15/myapp:/workspace jenkins/jenkins:lts-jdk21
+
+sudo docker exec -it jenkins bash
+
+cat /var/jenkins_home/secrets/initialAdminPassword
+
+JENKINSFILE:
+pipeline{
+    agent {
+        any
+        stages{
+            stage('Install Dependencies')
+            {
+                steps{
+                    dir('/workspace/myapp')
+                    sh 'npm i'
+                }
+            }
+            stage('Build Project')
+            {
+                steps{
+                    sh 'npm run build'
+                }
+            }
+            stage('Test application')
+            {
+                steps{
+                    sh 'npm run test'
+                }
+            }
+        }
+    }
+}
+
+ls
+bin  boot  dev	etc  home  lib	lib64  media  mnt  opt	proc  root  run  sbin  srv  sys  tmp  usr  var	workspace
+jenkins@8d26cbc23779:/$ cd workspace/
+jenkins@8d26cbc23779:/workspace$ ls
+Command.txt  myapp  simple-node-js-react-npm-app-master.zip
+
+
+RERUN:
+
