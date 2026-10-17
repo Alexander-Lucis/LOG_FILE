@@ -1,0 +1,1193 @@
+SECTION – A : SMALL QUESTIONS:
+Q1.Create a Node.js file that will convert the output "Hello World!" into upper-case Letters.
+Uppercase.js:
+let message = "Hello World!";
+let result = message.toUpperCase();
+console.log(result);
+----------------------------------------------------------------------
+Q2.Create a Node.js file that opens the requested file and returns the content to the client. If anything goes wrong, throw a 404 error.
+Prog2.js:
+const http = require('http');
+const fs = require('fs');
+const server = http.createServer((req, res) => { 
+    let file = '.' + req.url;
+    if (req.url === '/') {
+        file = './index.html';
+    }
+    fs.readFile(file, (err, data) => {
+        if (err) {
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            res.end('404 - File Not Found');
+            return;
+        }
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(data);
+    });
+});
+server.listen(3000, () => {
+    console.log('Server running at http://localhost:3000');
+});
+index.html:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Node.js File Server</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>This file is returned by the Node.js server.</p>
+</body>
+</html>
+----------------------------------------------------------------------
+Q3.Create a Node.js file that demonstrates create database and table in MySQL
+Createdb.js
+const mysql = require("mysql2"); 
+const connection = mysql.createConnection({ 
+host: "localhost", 
+user: "root", 
+password: "YOUR_PASSWORD" 
+}); 
+connection.connect((err) => { 
+if (err) throw err; 
+console.log("Connected to MySQL"); 
+connection.query("CREATE DATABASE IF NOT EXISTS collegeDB", (err) => { 
+if (err) throw err; 
+console.log("Database created"); 
+connection.changeUser({ database: "collegeDB" }, (err) => { 
+if (err) throw err; 
+const sql = `CREATE TABLE IF NOT EXISTS student ( 
+rollno INT PRIMARY KEY, 
+name VARCHAR(50), 
+marks INT 
+)`; 
+connection.query(sql, (err) => { 
+if (err) throw err; 
+console.log("Student table created"); 
+connection.end(); 
+}); 
+}); 
+}); 
+}); 
+----------------------------------------------------------------------
+Q4.Create a login component using react js consider appropriate fields.
+App.jsx:
+import { useState } from "react";
+import "./App.css";
+function App() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (username === "admin" && password === "1234") {
+      alert("Login Successful!");
+    } else {
+      alert("Invalid Username or Password");
+    }
+  };
+  return (
+    <div className="login-container">
+      <div className="login-box">
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+          <label>Username</label>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+export default App;
+App.css:
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: lightgray;
+}
+.login-box {
+  width: 350px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gray;
+}
+.login-box h2 {
+  text-align: center;
+}
+.login-box label {
+  display: block;
+  margin-top: 10px;
+}
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: blue;
+  color: white;
+  border: none;
+}
+----------------------------------------------------------------------
+Q5.Create a register component using react js consider appropriate fields.
+App.jsx:
+import { useState } from "react";
+import "./App.css";
+function App() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [mobile, setMobile] = useState("");
+  const handleRegister = (e) => {
+    e.preventDefault();
+    alert("Registration Successful!");
+  };
+  return (
+    <div className="register-container">
+      <div className="register-box">
+        <h2>Registration Form</h2>
+        <form onSubmit={handleRegister}>
+          <label>Name</label>
+          <input
+            type="text"
+            placeholder="Enter Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <label>Email</label>
+          <input
+            type="email"
+            placeholder="Enter Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <label>Username</label>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <label>Mobile Number</label>
+          <input
+            type="tel"
+            placeholder="Enter Mobile Number"
+            value={mobile}
+            onChange={(e) => setMobile(e.target.value)}
+            required
+          />
+          <button type="submit">
+            Register
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+export default App;
+App.css:
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: lightgray;
+}
+.register-box {
+  width: 350px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gray;
+}
+.register-box h2 {
+  text-align: center;
+}
+.register-box label {
+  display: block;
+  margin-top: 10px;
+}
+.register-box input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+.register-box button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+----------------------------------------------------------------------
+Q6.Create a react a component to render user name and update user name when there is change [use useEffect and useState]
+UserName.jsx:
+import { useState, useEffect } from "react";
+function UserName() {
+  const [name, setName] = useState("Ujwala");
+  useEffect(() => {
+    console.log("User name changed:", name);
+  }, [name]);
+  return (
+    <div>
+      <h1>User Name</h1>
+      <h2>Hello, {name}</h2>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Enter your name"
+      />
+    </div>
+  );
+}
+export default UserName;
+App.jsx:
+import UserName from "./UserName";
+function App() {
+  return (
+    <div>
+      <UserName />
+    </div>
+  );
+}
+export default App;
+----------------------------------------------------------------------
+Q7.Implement a simple drop down menu using useRef in react.
+App.jsx:
+import { useRef } from "react";
+import "./App.css";
+function App()
+ {
+  const menuRef = useRef();
+  const showMenu = () => {
+    if (menuRef.current.style.display === "none") 
+   {
+      menuRef.current.style.display = "block";
+    } else {
+      menuRef.current.style.display = "none";
+    }
+  };
+  return (
+    <div className="container">
+      <h2>Simple Drop Down Menu</h2>
+      <button onClick={showMenu}>
+        Menu
+      </button>
+      <div ref={menuRef} className="dropdown">
+        <p>Home</p>
+        <p>About</p>
+        <p>Services</p>
+        <p>Contact</p>
+      </div>
+    </div>
+  );
+}
+export default App;
+App.css:
+.container {
+  text-align: center;
+  margin-top: 100px;
+}
+button {
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.dropdown {
+  display: none;
+  width: 200px;
+  margin: 10px auto;
+  border: 1px solid gray;
+  background-color: white;
+}
+.dropdown p {
+  padding: 10px;
+  margin: 0;
+  cursor: pointer;
+}
+.dropdown p:hover {
+  background-color: lightgray;
+}
+----------------------------------------------------------------------
+Q8.Create a react js component which will illustrate the use of useState
+Counter.jsx:
+import { useState } from "react";
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <h1>useState Example</h1>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+      <button onClick={() => setCount(count - 1)}>
+        Decrement
+      </button>
+    </div>
+  );
+}
+export default Counter;
+----------------------------------------------------------------------
+Q9.Create login and register component and routers for them using react routes.
+Login.jsx:
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLogin = (e) => {
+    e.preventDefault();
+    alert("Login Successful");
+  };
+  return (
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br /><br />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <br /><br />
+        <button type="submit">Login</button>
+      </form>
+      <p>
+        Don't have an account? <Link to="/register">Register</Link>
+      </p>
+    </div>
+  );
+}
+export default Login;
+Register.jsx:
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+function Register() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleRegister = (e) => {
+    e.preventDefault();
+    alert("Registration Successful");
+  };
+  return (
+    <div>
+      <h2>Register</h2>
+      <form onSubmit={handleRegister}>
+        <input
+          type="text"
+          placeholder="Enter Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <br /><br />
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br /><br />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <br /><br />
+        <button type="submit">Register</button>
+      </form>
+      <p>
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
+    </div>
+  );
+}
+export default Register;
+App.jsx:
+import React from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+function App() {
+  return (
+    <BrowserRouter>
+      <nav>
+        <Link to="/login">Login</Link> |{" "}
+        <Link to="/register">Register</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+export default App;
+main.jsx:
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+----------------------------------------------------------------------
+Q10.Create react component to display list of employees consider any random employee data.
+EmployeeList.jsx:
+import React from "react";
+function EmployeeList() {
+  const employees = [
+    {
+      id: 1,
+      name: "Rahul Patil",
+      department: "IT",
+      salary: 45000
+    },
+    {
+      id: 2,
+      name: "Sneha Sharma",
+      department: "HR",
+      salary: 40000
+    },
+    {
+      id: 3,
+      name: "Amit Kulkarni",
+      department: "Finance",
+      salary: 50000
+    },
+    {
+      id: 4,
+      name: "Priya Deshmukh",
+      department: "Marketing",
+      salary: 42000
+    }
+  ];
+  return (
+    <div>
+      <h2>Employee List</h2>
+      {employees.map((employee) => (
+        <div key={employee.id}>
+          <h3>{employee.name}</h3>
+          <p>Department: {employee.department}</p>
+          <p>Salary: ₹{employee.salary}</p>
+          <hr />
+        </div>
+      ))}
+    </div>
+  );
+}
+export default EmployeeList;
+App.jsx:
+import EmployeeList from "./EmployeeList";
+function App() {
+  return (
+    <div>
+      <EmployeeList />
+    </div>
+  );
+}
+export default App;
+----------------------------------------------------------------------
+Q11.Create a javascript to illustrate the use of async and await.
+Wait.js:
+async function displayMessage() {
+    console.log("Start");
+    await new Promise(resolve => {
+        setTimeout(() => {
+            console.log("Hello, this is Async/Await example");
+            resolve();
+        }, 2000);
+    });
+    console.log("End");
+}
+displayMessage();
+----------------------------------------------------------------------
+Q12.Create a javascript to illustrate the use of promise and resolve.
+Promise.js:
+let myPromise = new Promise(function(resolve, reject) {
+
+    let success = true;
+
+    if (success) {
+        resolve("Promise is resolved successfully!");
+    } else {
+        reject("Promise is rejected!");
+    }
+});
+myPromise
+    .then(function(result) {
+        console.log(result);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+----------------------------------------------------------------------
+Q13.Create any react component to illustrate the react hook.
+HookDemo.jsx:
+import { useState, useEffect } from "react";
+function HookDemo() {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("Ujwala");
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+    console.log("Count changed:", count);
+  }, [count]);
+  return (
+    <div>
+      <h1>React Hook Demo</h1>
+      <h2>Hello, {name}</h2>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <h3>Count: {count}</h3>
+      <button onClick={() => setCount(count + 1)}>
+        Increase Count
+      </button>
+    </div>
+  );
+}
+export default HookDemo;
+App.jsx:
+import HookDemo from "./HookDemo";
+function App() {
+  return (
+    <div>
+      <HookDemo />
+    </div>
+  );
+}
+export default App;
+----------------------------------------------------------------------
+Q14.Create javascript application to illustrate the use of callback under functions.
+Callback.js:
+function calculate(a, b, callback) {
+    let result = a + b;
+    callback(result);
+}
+function display(result) {
+    console.log("Addition = " + result);
+}
+calculate(10, 20, display);
+----------------------------------------------------------------------
+Q15.Create a react component to display list of students consider any random student data.
+App.jsx:
+function App() {
+  const students = [
+    { id: 1, name: "Rahul", age: 21, course: "BCA" },
+    { id: 2, name: "Priya", age: 22, course: "BBA" },
+    { id: 3, name: "Amit", age: 21, course: "BCS" },
+    { id: 4, name: "Sneha", age: 22, course: "BCA" },
+    { id: 5, name: "Pooja", age: 21, course: "BCS" }
+  ];
+  return (
+    <div>
+      <h1>Student List</h1>
+      <ul>
+        {students.map((student) => (
+          <li key={student.id}>
+            {student.name} - {student.age} - {student.course}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+export default App;
+----------------------------------------------------------------------
+SECTION – B : BIG QUESTIONS:
+1.Create an HTML form that contain the Student Registration details and write a JavaScript to validate Student first and last name as it should not contain other than alphabets and age should be between 18 to 50.
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Registration</title>
+<script>
+function validateForm()
+{
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var age = document.getElementById("age").value;
+    var namePattern = /^[A-Za-z]+$/;
+    if(!namePattern.test(fname)) {
+        alert("First name must contain only letters.");
+        return false;
+    }
+    if(!namePattern.test(lname)) {
+        alert("Last name must contain only letters.");
+        return false;
+    }
+    if(age < 18 || age > 50) {
+        alert("Age must be between 18 and 50.");
+        return false;
+    }
+    alert("Registration successful!");
+    return true;
+}
+</script>
+</head>
+<body>
+<h2>Student Registration</h2>
+<form onsubmit="return validateForm()">
+    First Name: <input type="text" id="fname"><br><br>
+    Last Name: <input type="text" id="lname"><br><br>
+    Age: <input type="number" id="age"><br><br>
+    Contact: <input type="text" id="contact"><br><br>
+    Gender: 
+    <input type="radio" name="gender" > Male 
+    <input type="radio" name="gender" > Female <br>
+    Course: 
+    <select >
+        <option >BCS</option>
+        <option >BCA</option>
+        <option >BBA</option>
+    </select><br><br>
+    <input type="submit" value="Register">
+    <input type="reset" value="Reset">
+</form>
+</body>
+</html>
+----------------------------------------------------------------------
+Q2.Create an HTML form that contain the Employee Registration details and write a JavaScript to validate DOB, Joining Date, and Salary.
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Registration</title>
+<script>
+function validateForm()
+{
+    var dob = document.getElementById("dob").value;
+    var joining = document.getElementById("joining").value;
+    var salary = document.getElementById("salary").value;
+    if(dob == "" || joining == "" || salary == "")
+    {
+        alert("all fields are required");
+        return false;
+    }
+    var dobDate = new Date(dob);
+    var joiningDate = new Date(joining);
+    var today = new Date();
+    var age = today.getFullYear() - dobDate.getFullYear();
+    var month = today.getMonth() - dobDate.getMonth();
+
+    if(month < 0 || (month === 0 && today.getDate() < dobDate.getDate()))
+    {
+        age--;
+    }
+    if(age < 18)
+    {
+        alert("age must be older than 18");
+        return false;
+    }
+    if(joiningDate < dobDate)
+    {
+        alert("joining date cannot be before dob");
+        return false;
+    }
+    if(joiningDate > today)
+    {
+       alert("joining date cannot be in future");
+        return false;
+    }
+    if(salary <= 0 || isNaN(salary))
+    {
+        alert("salary must be greater than 0");
+        return false;
+    }
+    alert("Employee Registration Successfull");
+    return true;
+}
+</script>
+</head>
+<body>
+<h2>Employee Registration</h2>
+<form onsubmit="return validateForm()">
+    <label>Emp ID:</label><br>
+    <input type="text" id="empid"><br><br>
+    <label>Emp Name:</label><br>
+    <input type="text" id="ename"><br><br>
+    <label>Date of Birth:</label><br>
+    <input type="date" id="dob"><br><br>
+    <label>Joining Date:</label><br>
+    <input type="date" id="joining"><br><br>
+    <label>Salary:</label><br>
+    <input type="number" id="salary"><br><br>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
+----------------------------------------------------------------------
+Q3.Create an HTML form for Login and write a JavaScript to validate email ID using Regular Expression
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login Page</title>
+<script>
+function validateLogin() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    if (email === "" || password === "") {
+        alert("All fields are required");
+        return false;
+    }
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email ID");
+        return false;
+    }
+    alert("login successfull");
+    return true;
+}
+</script>
+</head>
+<body>
+<h2>Login Form</h2>
+<form onsubmit="return validateLogin()">
+    <label >Email ID:</label><br>
+    <input type="text" id="email"><br><br>
+    <label >Password:</label><br>
+    <input type="password" id="password"><br><br>
+    <button type="submit">Login</button>
+</form>
+</body>
+</html>
+----------------------------------------------------------------------
+Q4. Create a Node.js/Express HTML form with a file-upload field.
+app.js 
+const express = require("express"); 
+const multer = require("multer"); 
+const path = require("path"); 
+const app = express(); 
+const storage = multer.diskStorage({ 
+destination: (req, file, cb) => cb(null, "uploads/"), 
+filename: (req, file, cb) => 
+cb(null, Date.now() + path.extname(file.originalname)) 
+}); 
+const upload = multer({ storage }); 
+app.get("/", (req, res) => { 
+res.send(` 
+<h2>File Upload Form</h2> 
+<form action="/upload" method="POST" enctype="multipart/form-data"> 
+<input type="file" name="myfile" required> 
+<button type="submit">Upload</button> 
+</form> 
+`); 
+}); 
+app.post("/upload", upload.single("myfile"), (req, res) => { 
+res.send("File uploaded successfully: " + req.file.originalname); 
+}); 
+app.listen(3000, () => 
+console.log("Open http://localhost:3000") 
+); 
+----------------------------------------------------------------------
+Q5.Create a node.js file that Select all records from the "customers" table, and display the result object on console.
+App.js:
+const { MongoClient}=require("mongodb");
+const url="mongodb://127.0.0.1:27017";
+const client=new MongoClient(url);
+async function getCustomers() {
+    try{
+        await client.connect();
+        console.log("Connected to mongodb");
+        const db=client.db("mydb");
+        const customers=db.collection("customers");
+        const result=await customers.find({}).toArray();
+        console.log(result);
+    }
+    catch(error){
+        console.log("Error",error);
+    }
+    finally {
+        await client.close();
+    }
+}
+getCustomers();
+Mongodb:
+{
+  "name": "sneha",
+  "age": 22,
+  "city": "mumbai"
+}
+----------------------------------------------------------------------
+Q6.Create a node.js file that Insert Multiple Records in "student" table, and display the result object on console.result object on console.
+InsertStudent.js:
+const mysql = require("mysql2");
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+const sql = "INSERT INTO student (rollno, name, marks) VALUES ?";
+ const values = [
+    [1, "Ayesha", 78],
+    [2, "Rahul", 65],
+    [3, "Sneha", 54]
+];
+connection.query(sql, [values], (err, result) => {
+    if (err) throw err;
+    console.log("Result object:", result);
+    connection.end();
+});
+----------------------------------------------------------------------
+Q7.Create a node.js file that Select all records from the "customers" table, and delete the specified record.
+selectDeleteCustomer.js
+const mysql = require("mysql2");
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+ connection.query("SELECT * FROM customers", (err, rows) => {
+    if (err) throw err;
+    console.log("All customers:", rows);
+     const customerId = 2;
+    connection.query(
+        "DELETE FROM customers WHERE id = ?",
+        [customerId],
+        (err, result) => {
+            if (err) throw err;
+            console.log("Delete result object:", result);
+            connection.end();
+        }
+    );
+});
+----------------------------------------------------------------------
+Q8.Create a node js express server to provide login REST API validate response on any REST client like POSTMAN
+server.js
+const express = require("express");
+const app = express();
+const PORT = 3000;
+app.use(express.json());
+app.post("/login", (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    if (username === "admin" && password === "12345") {
+        res.status(200).json({
+            message: "Login successful",
+            username: username
+        });
+    } else {
+        res.status(401).json({
+            message: "Invalid username or password"
+        });
+    }
+});
+app.listen(PORT, () => {
+    console.log("Server running at http://localhost:" + PORT);
+});
+Postman:
+{
+    "username": "admin",
+    "password": "12345"
+}
+----------------------------------------------------------------------
+Q9.Create a node js express server to provide register REST API validate response on any REST client like POSTMAN
+server.js
+const express = require("express");
+const app = express();
+const PORT = 3000;
+app.use(express.json());        
+app.post("/register", (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const username = req.body.username;
+    const password = req.body.password;
+    if (!name || !email || !username || !password) {
+        return res.status(400).json({
+            message: "All fields are required"
+        });
+    }
+    res.status(201).json({
+        message: "Registration successful",
+        user: { name: name, email: email, username: username }
+    });
+});
+app.listen(PORT, () => {
+    console.log("Server running at http://localhost:" + PORT);
+});
+Postman:
+{
+    "name": "Rahul Patil",
+    "email": "rahul@gmail.com",
+    "username": "rahul",
+    "password": "12345"
+}
+----------------------------------------------------------------------
+Q10.Create a nodejs express server to list all the employees from the employee table validate response on any REST client like POSTMAN.
+server.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+const PORT = 3000;
+ 
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     
+    database: "collegeDB"
+});
+app.get("/employees", (req, res) => {
+    db.query("SELECT * FROM employee", (err, rows) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.status(200).json(rows);
+    });
+});
+app.listen(PORT, () => {
+    console.log("Server running at http://localhost:" + PORT);
+});
+----------------------------------------------------------------------
+Q11. Build a simple multi-page React application using React Router. Create different routes for a home page, about page, and contact page. Implement navigation between these routes.
+App.jsx
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+function Home() {
+    return <h2>Home Page</h2>;
+}
+function About() {
+    return <h2>About Page</h2>;
+}
+function Contact() {
+    return <h2>Contact Page</h2>;
+}
+export default function App() {
+    return (
+        <BrowserRouter>
+            {/* navigation links */}
+            <nav>
+                <Link to="/">Home</Link> |{" "}
+                <Link to="/about">About</Link> |{" "}
+                <Link to="/contact">Contact</Link>
+            </nav>
+            {/* route table: URL -> component */}
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
+        </BrowserRouter>
+    );
+}
+----------------------------------------------------------------------
+Q12.Create a nodejs express server to insert employee into database.
+insertEmployee.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+app.use(express.json());        
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     
+    database: "collegeDB"
+});
+ app.post("/employees", (req, res) => {
+    const { name, email, department, salary } = req.body;
+    const sql = "INSERT INTO employee (name, email, department, salary) " +
+                "VALUES (?, ?, ?, ?)";
+    db.query(sql, [name, email, department, salary], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.status(201).json({
+            message: "Employee inserted successfully",
+            insertId: result.insertId
+        });
+    });
+});
+app.listen(3000, () => console.log("Server running at http://localhost:3000"));
+Postman:
+{
+    "name": "Ayesha Khan",
+    "email": "ayesha@example.com",
+    "department": "IT",
+    "salary": 45000
+}
+----------------------------------------------------------------------
+Q13.Create a nodejs express server to search an employee by email validate response on any REST client like POSTMAN
+searchEmployee.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     
+    database: "collegeDB"
+});
+app.get("/employee", (req, res) => {
+    const email = req.query.email;      
+    db.query("SELECT * FROM employee WHERE email = ?", [email], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        if (rows.length === 0) {
+            return res.status(404).json({ message: "Employee not found" });
+        }
+        res.status(200).json(rows[0]);   // first matching row
+    });
+}); 
+app.listen(3000, () => console.log("Server running at http://localhost:3000"));
+----------------------------------------------------------------------
+Q14. Create a nodejs express server to generate jwt token in the response of login api.
+server.js
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const app = express();
+const PORT = 3000;
+const SECRET_KEY = "mysecretkey";     
+app.use(express.json());
+app.post("/login", (req, res) => {
+    const { username, password } = req.body;
+    if (username === "admin" && password === "12345") {
+        const token = jwt.sign(
+            { username: username },
+            SECRET_KEY,
+            { expiresIn: "1h" }       
+        );
+        res.json({
+            message: "Login successful",
+            token: token
+        });
+    } else {
+        res.status(401).json({ message: "Invalid username or password" });
+    }
+});
+app.listen(PORT, () => {
+    console.log("Server running at http://localhost:" + PORT);
+});
+Postman:
+{
+    "username": "admin",
+    "password": "12345"
+}
+----------------------------------------------------------------------
+Q15.Create a nodejs server to insert teacher data into teacher table use mysql.
+insertTeacher.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+app.use(express.json());
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+// POST /teacher  -> insert one teacher
+app.post("/teacher", (req, res) => {
+    const { name, email, subject, salary } = req.body;
+    const sql = "INSERT INTO teacher (name, email, subject, salary) " +
+                "VALUES (?, ?, ?, ?)";
+    db.query(sql, [name, email, subject, salary], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+        console.log("Result object:", result);
+        res.status(201).json({
+            message: "Teacher inserted successfully",
+            insertId: result.insertId
+        });
+    });
+});
+app.listen(3000, () => console.log("Server running at http://localhost:3000"));
+Postman:
+{
+    "name": "Umar Shaikh",
+    "email": "umar@example.com",
+    "subject": "Computer Science",
+    "salary": 50000
+}
+----------------------------------------------------------------------
+Q16.Create a node js server to delete student record by roll no using mysql.
+deleteStudent.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+app.delete("/student/:rollno", (req, res) => {
+    const rollno = req.params.rollno;      // value taken from the URL
+    db.query("DELETE FROM student WHERE rollno = ?", [rollno], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+ 
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Student not found" });
+        }
+        res.json({ message: "Student deleted successfully" });
+    });
+});
+app.listen(3000, () => console.log("Server running at http://localhost:3000"));
+----------------------------------------------------------------------
+Q17.Create a node js server to list all the students having marks greater than 60 using mysql.
+studentsAbove60.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+app.get("/students/above60", (req, res) => {
+    db.query("SELECT * FROM student WHERE marks > ?", [60], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
+app.listen(3000, () => console.log("Server running at http://localhost:3000"));
+----------------------------------------------------------------------
+
+

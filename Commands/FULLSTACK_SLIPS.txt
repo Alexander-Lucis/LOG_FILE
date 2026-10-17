@@ -1,0 +1,1842 @@
+2. Software, Packages and Database Setup
+Do this setup once before running the programs. Replace YOUR_PASSWORD in the programs with your own MySQL root password.
+2.1 Software required
+•	Node.js (LTS version) - runs JavaScript outside the browser. Check with: node -v and npm -v
+•	MySQL Server (with MySQL Workbench or the command line) - the database.
+•	Postman - a REST client used to send requests to the APIs and see the responses.
+•	VS Code - code editor; Google Chrome or Edge - browser.
+2.2 npm packages used
+npm init -y                    (creates package.json in a new folder)
+npm install express            (web framework for REST APIs)
+npm install mysql2             (connects Node.js to MySQL)
+npm install jsonwebtoken       (creates JWT tokens)
+
+•	A package is installed once per project folder. Several packages can be installed together, e.g. npm install express mysql2.
+2.3 MySQL database and tables
+Run this script once in MySQL Workbench (or the mysql command line). Question Small Q3 also creates collegeDB and the student table from Node.js.
+CREATE DATABASE IF NOT EXISTS collegeDB;
+USE collegeDB;
+ 
+CREATE TABLE IF NOT EXISTS customers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    address VARCHAR(100)
+);
+INSERT INTO customers (name, address) VALUES
+    ('Amit', 'Pune'), ('Sara', 'Mumbai'), ('John', 'Nashik');
+ 
+CREATE TABLE IF NOT EXISTS student (
+    rollno INT PRIMARY KEY,
+    name VARCHAR(50),
+    marks INT
+);
+ 
+CREATE TABLE IF NOT EXISTS employee (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100),
+    department VARCHAR(50),
+    salary INT
+);
+INSERT INTO employee (name, email, department, salary) VALUES
+    ('Rahul Patil', 'rahul@gmail.com', 'IT', 45000),
+    ('Sneha Sharma', 'sneha@gmail.com', 'HR', 40000);
+ 
+CREATE TABLE IF NOT EXISTS teacher (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100),
+    subject VARCHAR(50),
+    salary INT
+);
+
+2.4 Creating a React project (Vite)
+npm create vite@latest my-app -- --template react
+cd my-app
+npm install
+npm install react-router-dom     (only for the routing questions)
+npm run dev
+
+•	Open the address shown in the terminal (normally http://localhost:5173/).
+•	Replace the code of src/App.jsx with the code given in the question; new component files are created inside the src folder.
+2.5 Testing an API in Postman
+•	Choose the method (GET, POST or DELETE) and type the URL, e.g. http://localhost:3000/login.
+•	For POST requests open Body -> raw -> choose JSON and type the JSON data.
+•	Click Send and check the status code (200, 201, 401, 404 ...) and the JSON response.
+•	The Node.js server (node server.js) must be running in a terminal while testing.
+3. PART A - BIG QUESTIONS (1 to 17)
+Big Q1
+Question: Create an HTML form that contain the Student Registration details and write a JavaScript to validate Student first and last name as it should not contain other than alphabets and age should be between 18 to 50.
+What we need (requirements)
+•	A web browser (Chrome / Edge) and a code editor (VS Code). No installation or server is needed.
+•	HTML <form> with fields: first name, last name, age, contact, gender, course.
+•	A JavaScript function validateForm() that checks the values before the form is submitted.
+•	A regular expression /^[A-Za-z]+$/ to allow only alphabets in the names.
+Program / Code
+File: student.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <script>
+        function validateForm() {
+            // read the values typed by the user
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var age = document.getElementById("age").value;
+ 
+            // pattern: only alphabets (A-Z or a-z), at least one letter
+            var namePattern = /^[A-Za-z]+$/;
+ 
+            if (!namePattern.test(fname)) {
+                alert("First name must contain only letters.");
+                return false;
+            }
+            if (!namePattern.test(lname)) {
+                alert("Last name must contain only letters.");
+                return false;
+            }
+            if (age < 18 || age > 50) {
+                alert("Age must be between 18 and 50.");
+                return false;
+            }
+            alert("Registration successful!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Student Registration</h2>
+    <form onsubmit="return validateForm()">
+        First Name: <input type="text" id="fname"><br><br>
+        Last Name: <input type="text" id="lname"><br><br>
+        Age: <input type="number" id="age"><br><br>
+        Contact: <input type="text" id="contact"><br><br>
+        Gender:
+        <input type="radio" name="gender"> Male
+        <input type="radio" name="gender"> Female <br><br>
+        Course:
+        <select>
+            <option>BCS</option>
+            <option>BCA</option>
+            <option>BBA</option>
+        </select><br><br>
+        <input type="submit" value="Register">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>
+
+How to run / test
+Save the file as student.html and double-click it to open in the browser.
+
+Output
+Name with digits (e.g. Raj5)  ->  alert: First name must contain only letters.
+Age 15 or 60                   ->  alert: Age must be between 18 and 50.
+All values correct             ->  alert: Registration successful!
+
+Explanation (what it does)
+•	onsubmit="return validateForm()" runs the function when Register is clicked. The form is submitted only if the function returns true; return false cancels it.
+•	Regular expression /^[A-Za-z]+$/ : ^ means start, [A-Za-z] means any letter, + means one or more, $ means end. A digit, space or symbol makes test() return false.
+•	age < 18 || age > 50 rejects every age outside the range 18 to 50 (an empty age is treated as 0, so it is rejected too).
+•	alert() shows the error message to the user.
+
+Big Q2
+Question: Create an HTML form that contain the Employee Registration details and write a JavaScript to validate DOB, Joining Date, and Salary.
+What we need (requirements)
+•	Web browser and code editor only.
+•	Form fields: Emp ID, Emp Name, Date of Birth, Joining Date, Salary (date fields use <input type="date">).
+•	JavaScript Date object to compare dates and calculate the age.
+•	Rules checked: all fields filled, age at least 18, joining date after DOB and not in the future, salary greater than 0.
+Program / Code
+File: employee.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Registration</title>
+    <script>
+        function validateForm() {
+            var dob = document.getElementById("dob").value;
+            var joining = document.getElementById("joining").value;
+            var salary = document.getElementById("salary").value;
+ 
+            // 1. empty check
+            if (dob === "" || joining === "" || salary === "") {
+                alert("All fields are required");
+                return false;
+            }
+ 
+            var dobDate = new Date(dob);
+            var joiningDate = new Date(joining);
+            var today = new Date();
+ 
+            // 2. calculate age from date of birth
+            var age = today.getFullYear() - dobDate.getFullYear();
+            var month = today.getMonth() - dobDate.getMonth();
+            if (month < 0 || (month === 0 && today.getDate() < dobDate.getDate())) {
+                age--;      // birthday not yet come this year
+            }
+            if (age < 18) {
+                alert("Employee must be at least 18 years old");
+                return false;
+            }
+ 
+            // 3. joining date checks
+            if (joiningDate < dobDate) {
+                alert("Joining date cannot be before DOB");
+                return false;
+            }
+            if (joiningDate > today) {
+                alert("Joining date cannot be in future");
+                return false;
+            }
+ 
+            // 4. salary check
+            if (salary <= 0 || isNaN(salary)) {
+                alert("Salary must be greater than 0");
+                return false;
+            }
+ 
+            alert("Employee Registration Successful");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Employee Registration</h2>
+    <form onsubmit="return validateForm()">
+        <label>Emp ID:</label><br>
+        <input type="text" id="empid"><br><br>
+        <label>Emp Name:</label><br>
+        <input type="text" id="ename"><br><br>
+        <label>Date of Birth:</label><br>
+        <input type="date" id="dob"><br><br>
+        <label>Joining Date:</label><br>
+        <input type="date" id="joining"><br><br>
+        <label>Salary:</label><br>
+        <input type="number" id="salary"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
+How to run / test
+Save as employee.html and open it in the browser.
+
+Output
+Future joining date  ->  alert: Joining date cannot be in future
+Salary 0 or negative  ->  alert: Salary must be greater than 0
+All valid            ->  alert: Employee Registration Successful
+
+Explanation (what it does)
+•	new Date(value) converts the text from the date box into a Date object so that dates can be compared with < and >.
+•	Age = current year minus birth year; it is reduced by 1 if the birthday has not yet come this year.
+•	Joining date must not be earlier than the date of birth and must not be later than today.
+•	isNaN(salary) is true when the value is not a number; salary <= 0 rejects zero or negative salary.
+
+Big Q3
+Question: Create an HTML form for Login and write a JavaScript to validate email ID using Regular Expression
+What we need (requirements)
+•	Web browser and code editor only.
+•	Form with Email ID and Password fields.
+•	A regular expression that matches the pattern name@domain.extension.
+Program / Code
+File: login.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <script>
+        function validateLogin() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+ 
+            if (email === "" || password === "") {
+                alert("All fields are required");
+                return false;
+            }
+ 
+            // Regular expression for email validation
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+ 
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email ID");
+                return false;
+            }
+            alert("Login successful");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form onsubmit="return validateLogin()">
+        <label>Email ID:</label><br>
+        <input type="text" id="email"><br><br>
+        <label>Password:</label><br>
+        <input type="password" id="password"><br><br>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
+
+How to run / test
+Save as login.html and open it in the browser.
+
+Output
+abc@gmail      ->  alert: Please enter a valid email ID
+abc@gmail.com  ->  alert: Login successful
+
+Explanation (what it does)
+•	[a-zA-Z0-9._%+-]+ : the part before @ (letters, digits and the symbols . _ % + -).
+•	@ : the @ symbol must be present once.
+•	[a-zA-Z0-9.-]+ : the domain name, for example gmail.
+•	\. : a literal dot (the backslash is needed because . normally means any character).
+•	[a-zA-Z]{2,} : the extension (com, in, org) with at least two letters.
+•	regex.test(text) returns true if the text matches the whole pattern.
+
+Big Q4
+Question: Create a Node.js file that writes an HTML form, with an upload field.
+What we need (requirements)
+•	Node.js installed (check with node -v). Only the built-in http module is used, so no npm package is required.
+•	An HTML form with enctype="multipart/form-data" and an <input type="file"> field.
+Program / Code
+File: upload.js
+// upload.js
+var http = require("http");            // built-in module to create a server
+ 
+http.createServer(function (req, res) {
+    // tell the browser that the reply is HTML
+    res.writeHead(200, { "Content-Type": "text/html" });
+ 
+    // write the HTML form
+    res.write("<h2>File Upload Form</h2>");
+    res.write('<form action="fileupload" method="post" ' +
+              'enctype="multipart/form-data">');
+    res.write('<input type="file" name="filetoupload"><br><br>');
+    res.write('<input type="submit" value="Upload">');
+    res.write("</form>");
+ 
+    return res.end();                  // finish the response
+}).listen(8080);
+ 
+console.log("Open http://localhost:8080");
+
+How to run / test
+node upload.js
+Open http://localhost:8080 in the browser.
+
+Output
+Browser shows the heading File Upload Form, a Choose File button and an Upload button.
+
+Explanation (what it does)
+•	http.createServer() creates a web server; the function runs for every request (req = request, res = response).
+•	res.writeHead(200, {...}) sends status 200 (OK) and the header Content-Type: text/html so the browser shows the output as a web page.
+•	res.write() sends one piece of the HTML; res.end() completes the response.
+•	enctype="multipart/form-data" is compulsory for any form that uploads a file.
+•	This program only writes (displays) the form, as asked. Saving the uploaded file on the server needs an extra package such as formidable or multer.
+
+Big Q5
+Question: Create a node.js file that Select all records from the "customers" table, and display the result object on console.
+What we need (requirements)
+•	MySQL server running, with database collegeDB and table customers (see Section 2.3).
+•	npm package mysql2:  npm install mysql2
+Program / Code
+File: selectCustomers.js
+const mysql = require("mysql2");
+ 
+// connection details
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+ 
+// run the SELECT query
+connection.query("SELECT * FROM customers", (err, results, fields) => {
+    if (err) throw err;                       // stop if there is an error
+    console.log("Result object:", results);   // array of rows
+    connection.end();                         // close the connection
+});
+
+How to run / test
+npm install mysql2
+node selectCustomers.js
+
+Output
+Result object: [
+  { id: 1, name: 'Amit', address: 'Pune' },
+  { id: 2, name: 'Sara', address: 'Mumbai' },
+  { id: 3, name: 'John', address: 'Nashik' }
+]
+
+Explanation (what it does)
+•	require("mysql2") loads the MySQL driver; createConnection() stores the host, user, password and database name.
+•	connection.query(sql, callback) runs the SQL. The callback receives err (error), results (array of row objects) and fields (column information).
+•	SELECT * FROM customers fetches all columns of all rows.
+•	connection.end() closes the connection so that the program exits.
+
+Big Q6
+Question: Create a node.js file that Insert Multiple Records in "student" table, and display the result object on console.
+What we need (requirements)
+•	MySQL server with table student(rollno, name, marks) (see Section 2.3).
+•	npm package mysql2.
+Program / Code
+File: insertStudents.js
+const mysql = require("mysql2");
+ 
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+ 
+// one ? stands for the whole list of rows
+const sql = "INSERT INTO student (rollno, name, marks) VALUES ?";
+ 
+// each inner array is one record
+const values = [
+    [1, "Ayesha", 78],
+    [2, "Rahul", 65],
+    [3, "Sneha", 54]
+];
+ 
+connection.query(sql, [values], (err, result) => {
+    if (err) throw err;
+    console.log("Result object:", result);
+    connection.end();
+});
+
+How to run / test
+node insertStudents.js
+
+Output
+Result object: ResultSetHeader {
+  affectedRows: 3,
+  insertId: 0,
+  warningStatus: 0 ... }
+
+Explanation (what it does)
+•	VALUES ? with [values] inserts many rows in a single query. The outer array is the parameter list and the inner arrays are the rows.
+•	result.affectedRows shows how many rows were inserted (3 here).
+•	Running the file twice gives a duplicate-key error because rollno is the primary key; use new roll numbers or delete the old rows.
+
+Big Q7
+Question: Create a node.js file that Select all records from the "customers" table, and delete the specified record.
+What we need (requirements)
+•	MySQL server with table customers(id, name, address).
+•	npm package mysql2.
+Program / Code
+File: selectDeleteCustomer.js
+const mysql = require("mysql2");
+ 
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+ 
+// 1. select all records
+connection.query("SELECT * FROM customers", (err, rows) => {
+    if (err) throw err;
+    console.log("All customers:", rows);
+ 
+    // 2. delete the specified record
+    const customerId = 2;            // change this id as required
+    connection.query(
+        "DELETE FROM customers WHERE id = ?",
+        [customerId],
+        (err, result) => {
+            if (err) throw err;
+            console.log("Delete result object:", result);
+            connection.end();
+        }
+    );
+});
+
+How to run / test
+node selectDeleteCustomer.js
+
+Output
+All customers: [ ...3 rows... ]
+Delete result object: ResultSetHeader { affectedRows: 1, ... }
+
+Explanation (what it does)
+•	The first query displays all customers. Inside its callback the second query deletes the customer whose id is stored in customerId.
+•	The queries are nested because Node.js is asynchronous: the delete must start only after the select has finished.
+•	WHERE id = ? with [customerId] is a parameterised query; it is safe from SQL injection. Without WHERE, DELETE would remove every row.
+•	affectedRows: 1 confirms that one record was deleted.
+
+Big Q8
+Question: Creat a node js express server to provide login REST API validate response on any REST client like POSTMAN
+What we need (requirements)
+•	Node.js, npm, and the Postman application.
+•	Setup:  mkdir LoginRESTAPI, cd LoginRESTAPI, npm init -y, npm install express
+•	Express is a web framework that makes it easy to build REST APIs.
+Program / Code
+File: server.js
+const express = require("express");
+const app = express();
+const PORT = 3000;
+ 
+// middleware to read JSON data sent in the request body
+app.use(express.json());
+ 
+// Login REST API  (POST /login)
+app.post("/login", (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+ 
+    // validate username and password
+    if (username === "admin" && password === "12345") {
+        res.status(200).json({
+            message: "Login successful",
+            username: username
+        });
+    } else {
+        res.status(401).json({
+            message: "Invalid username or password"
+        });
+    }
+});
+ 
+// start the server
+app.listen(PORT, () => {
+    console.log("Server running at http://localhost:" + PORT);
+});
+
+File: Postman request body (Body -> raw -> JSON)
+{
+    "username": "admin",
+    "password": "12345"
+}
+
+How to run / test
+node server.js
+Postman: Method POST, URL http://localhost:3000/login, Body -> raw -> JSON, click Send.
+
+Output
+Correct data  -> 200 OK   {"message": "Login successful", "username": "admin"}
+Wrong data    -> 401      {"message": "Invalid username or password"}
+
+Explanation (what it does)
+•	app.use(express.json()) is middleware that converts the JSON body of the request into the object req.body.
+•	app.post("/login", handler) creates an API that answers HTTP POST requests on the path /login.
+•	The username and password are compared with fixed values (admin / 12345) to keep the program simple. A real application checks them in a database.
+•	Status codes: 200 = OK, 401 = Unauthorized. res.status(code).json(object) sends the status and a JSON reply.
+•	Postman acts as the REST client: it sends the request and displays the response, so the API can be tested without a front-end.
+
+Big Q9
+Question: Create a node js express server to provide register REST API validate response on any REST client like POSTMAN
+What we need (requirements)
+•	Node.js, npm and Postman.
+•	Setup:  mkdir RegisterRESTAPI, cd RegisterRESTAPI, npm init -y, npm install express
+Program / Code
+File: server.js
+const express = require("express");
+const app = express();
+const PORT = 3000;
+ 
+app.use(express.json());           // read JSON body
+ 
+// Register REST API  (POST /register)
+app.post("/register", (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const username = req.body.username;
+    const password = req.body.password;
+ 
+    // validate input: every field is required
+    if (!name || !email || !username || !password) {
+        return res.status(400).json({
+            message: "All fields are required"
+        });
+    }
+ 
+    // send success response
+    res.status(201).json({
+        message: "Registration successful",
+        user: { name: name, email: email, username: username }
+    });
+});
+ 
+app.listen(PORT, () => {
+    console.log("Server running at http://localhost:" + PORT);
+});
+
+File: Postman request body (Body -> raw -> JSON)
+{
+    "name": "Rahul Patil",
+    "email": "rahul@gmail.com",
+    "username": "rahul",
+    "password": "12345"
+}
+
+How to run / test
+node server.js
+Postman: POST http://localhost:3000/register with the JSON body above.
+
+Output
+Complete data   -> 201 Created  {"message": "Registration successful", "user": {...}}
+Missing a field -> 400 Bad Request  {"message": "All fields are required"}
+
+Explanation (what it does)
+•	The API receives name, email, username and password in the JSON body.
+•	!name || !email || ... is true if any field is missing or empty, so the server replies 400 (Bad Request).
+•	On success the server replies 201 (Created) and returns the user details. The password is not sent back for security.
+•	return before res.status(400) stops the function so that a second response is not sent.
+
+Big Q10
+Question: Create a nodejs express server to list all the employees from the employee table validate response on any REST client like POSTMAN.
+What we need (requirements)
+•	MySQL with table employee(id, name, email, department, salary) and a few rows (see Section 2.3).
+•	Setup:  npm init -y, npm install express mysql2
+Program / Code
+File: server.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+const PORT = 3000;
+ 
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+ 
+// GET /employees  -> list all employees
+app.get("/employees", (req, res) => {
+    db.query("SELECT * FROM employee", (err, rows) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.status(200).json(rows);
+    });
+});
+ 
+app.listen(PORT, () => {
+    console.log("Server running at http://localhost:" + PORT);
+});
+
+How to run / test
+node server.js
+Postman: GET http://localhost:3000/employees, click Send.
+
+Output
+200 OK  [ {"id":1,"name":"Rahul Patil","email":"rahul@gmail.com","department":"IT","salary":45000}, ... ]
+
+Explanation (what it does)
+•	app.get("/employees", ...) answers HTTP GET requests on /employees.
+•	db.query("SELECT * FROM employee") reads every row of the employee table; rows is an array of objects.
+•	res.json(rows) converts the array to JSON and sends it to Postman.
+•	If the database gives an error the server replies with status 500 (Internal Server Error).
+
+Big Q11
+Question: Build a simple multi-page React application using React Router. Create different routes for a home page, about page, and contact page. Implement navigation between these routes.
+What we need (requirements)
+•	Node.js and a Vite React project (Section 2.4) and the package react-router-dom.
+•	Commands:  npm create vite@latest multi-page-app -- --template react, cd multi-page-app, npm install, npm install react-router-dom
+Program / Code
+File: src/App.jsx
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+ 
+// three simple page components
+function Home() {
+    return <h2>Home Page</h2>;
+}
+function About() {
+    return <h2>About Page</h2>;
+}
+function Contact() {
+    return <h2>Contact Page</h2>;
+}
+ 
+export default function App() {
+    return (
+        <BrowserRouter>
+            {/* navigation links */}
+            <nav>
+                <Link to="/">Home</Link> |{" "}
+                <Link to="/about">About</Link> |{" "}
+                <Link to="/contact">Contact</Link>
+            </nav>
+ 
+            {/* route table: URL -> component */}
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
+        </BrowserRouter>
+    );
+}
+
+How to run / test
+npm run dev
+Open http://localhost:5173 and click Home, About and Contact.
+
+Output
+Clicking a link changes the URL (/, /about, /contact) and the page text without reloading the browser.
+
+Explanation (what it does)
+•	BrowserRouter enables routing for everything inside it.
+•	<Link to="/about"> creates a navigation link. Unlike <a href>, it changes the page without reloading.
+•	<Routes> checks the current URL and shows the <Route> whose path matches; element is the component to display.
+•	Home, About and Contact are ordinary function components that return JSX.
+
+Big Q12
+Question: Create a nodejs express server to insert employee into database.
+What we need (requirements)
+•	MySQL table employee(id, name, email, department, salary).
+•	Setup:  npm install express mysql2
+Program / Code
+File: insertEmployee.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+ 
+app.use(express.json());          // read JSON body
+ 
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+ 
+// POST /employees  -> insert one employee
+app.post("/employees", (req, res) => {
+    const { name, email, department, salary } = req.body;
+ 
+    const sql = "INSERT INTO employee (name, email, department, salary) " +
+                "VALUES (?, ?, ?, ?)";
+ 
+    db.query(sql, [name, email, department, salary], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+ 
+        res.status(201).json({
+            message: "Employee inserted successfully",
+            insertId: result.insertId
+        });
+    });
+});
+ 
+app.listen(3000, () => console.log("Server running at http://localhost:3000"));
+
+File: Postman request body (Body -> raw -> JSON)
+{
+    "name": "Ayesha Khan",
+    "email": "ayesha@example.com",
+    "department": "IT",
+    "salary": 45000
+}
+
+How to run / test
+node insertEmployee.js
+Postman: POST http://localhost:3000/employees with the JSON body above.
+
+Output
+201 Created  {"message": "Employee inserted successfully", "insertId": 4}
+
+Explanation (what it does)
+•	const { name, email, department, salary } = req.body is object destructuring: it takes four values out of the request body in one line.
+•	The four ? marks are placeholders filled from the array [name, email, department, salary]; this prevents SQL injection.
+•	result.insertId is the auto-generated id of the new row.
+•	Status 201 means that a new resource was created.
+
+Big Q13
+Question: Create a nodejs express server to search an employee by email validate response on any REST client like POSTMAN
+What we need (requirements)
+•	MySQL table employee with some rows (at least one with a known email).
+•	Setup:  npm install express mysql2
+Program / Code
+File: searchEmployee.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+ 
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+ 
+// GET /employee?email=rahul@gmail.com
+app.get("/employee", (req, res) => {
+    const email = req.query.email;      // value after ?email=
+ 
+    db.query("SELECT * FROM employee WHERE email = ?", [email], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+ 
+        if (rows.length === 0) {
+            return res.status(404).json({ message: "Employee not found" });
+        }
+        res.status(200).json(rows[0]);   // first matching row
+    });
+});
+ 
+app.listen(3000, () => console.log("Server running at http://localhost:3000"));
+
+How to run / test
+node searchEmployee.js
+Postman: GET http://localhost:3000/employee?email=rahul@gmail.com
+
+Output
+Email exists    -> 200 OK  {"id":1,"name":"Rahul Patil","email":"rahul@gmail.com", ...}
+Email not found -> 404     {"message": "Employee not found"}
+
+Explanation (what it does)
+•	req.query.email reads the query-string value from the URL (?email=...).
+•	WHERE email = ? selects only the employee with that email.
+•	rows.length === 0 means no match, so the server answers 404 (Not Found); otherwise it returns the first row as JSON.
+•	Testing both a valid and an invalid email in Postman validates the response.
+
+Big Q14
+Question: Create a nodejs express server to generate jwt token in the response of login api.
+What we need (requirements)
+•	Setup:  npm install express jsonwebtoken
+•	JWT (JSON Web Token) is a signed token that the server gives to the client after login; the client sends it back later to prove its identity.
+Program / Code
+File: server.js
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const app = express();
+const PORT = 3000;
+const SECRET_KEY = "mysecretkey";     // secret used to sign the token
+ 
+app.use(express.json());
+ 
+app.post("/login", (req, res) => {
+    const { username, password } = req.body;
+ 
+    if (username === "admin" && password === "12345") {
+        // create the token: payload, secret key, options
+        const token = jwt.sign(
+            { username: username },
+            SECRET_KEY,
+            { expiresIn: "1h" }       // valid for 1 hour
+        );
+ 
+        res.json({
+            message: "Login successful",
+            token: token
+        });
+    } else {
+        res.status(401).json({ message: "Invalid username or password" });
+    }
+});
+ 
+app.listen(PORT, () => {
+    console.log("Server running at http://localhost:" + PORT);
+});
+
+File: Postman request body (Body -> raw -> JSON)
+{
+    "username": "admin",
+    "password": "12345"
+}
+
+How to run / test
+node server.js
+Postman: POST http://localhost:3000/login with the JSON body above.
+
+Output
+200 OK  {"message": "Login successful", "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."}
+
+Explanation (what it does)
+•	jwt.sign(payload, secret, options) creates the token. The payload carries user data, the secret key signs it, and expiresIn sets its life time.
+•	A JWT has three parts separated by dots: header . payload . signature. Nobody can change the payload without breaking the signature.
+•	If the username or password is wrong, no token is created and the server returns 401.
+•	The client keeps the token and sends it in the header Authorization: Bearer <token> for later requests.
+
+Big Q15
+Question: Create a nodejs server to insert teacher data into teacher table use mysql.
+What we need (requirements)
+•	MySQL table teacher(id, name, email, subject, salary) (see Section 2.3).
+•	Setup:  npm install express mysql2
+Program / Code
+File: insertTeacher.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+ 
+app.use(express.json());
+ 
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+ 
+// POST /teacher  -> insert one teacher
+app.post("/teacher", (req, res) => {
+    const { name, email, subject, salary } = req.body;
+ 
+    const sql = "INSERT INTO teacher (name, email, subject, salary) " +
+                "VALUES (?, ?, ?, ?)";
+ 
+    db.query(sql, [name, email, subject, salary], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+ 
+        console.log("Result object:", result);
+        res.status(201).json({
+            message: "Teacher inserted successfully",
+            insertId: result.insertId
+        });
+    });
+});
+ 
+app.listen(3000, () => console.log("Server running at http://localhost:3000"));
+
+File: Postman request body (Body -> raw -> JSON)
+{
+    "name": "Sara Shaikh",
+    "email": "sara@example.com",
+    "subject": "Computer Science",
+    "salary": 50000
+}
+
+How to run / test
+node insertTeacher.js
+Postman: POST http://localhost:3000/teacher with the JSON body above.
+
+Output
+201 Created  {"message": "Teacher inserted successfully", "insertId": 1}
+
+Explanation (what it does)
+•	The server receives the teacher details as JSON, builds an INSERT query with ? placeholders and runs it with db.query().
+•	On success the result object is printed on the console and a 201 reply is sent.
+•	The column names in the query must match the columns of the teacher table.
+
+Big Q16
+Question: Create a node js server to delete student record by roll no using mysql.
+What we need (requirements)
+•	MySQL table student(rollno, name, marks) with some rows.
+•	Setup:  npm install express mysql2
+Program / Code
+File: deleteStudent.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+ 
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+ 
+// DELETE /student/2  -> delete student having roll no 2
+app.delete("/student/:rollno", (req, res) => {
+    const rollno = req.params.rollno;      // value taken from the URL
+ 
+    db.query("DELETE FROM student WHERE rollno = ?", [rollno], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+ 
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Student not found" });
+        }
+        res.json({ message: "Student deleted successfully" });
+    });
+});
+ 
+app.listen(3000, () => console.log("Server running at http://localhost:3000"));
+
+How to run / test
+node deleteStudent.js
+Postman: DELETE http://localhost:3000/student/2
+
+Output
+Roll no exists    -> 200  {"message": "Student deleted successfully"}
+Roll no not found -> 404  {"message": "Student not found"}
+
+Explanation (what it does)
+•	app.delete() answers HTTP DELETE requests. :rollno in the path is a URL parameter, read with req.params.rollno.
+•	DELETE FROM student WHERE rollno = ? removes only the matching student.
+•	result.affectedRows tells how many rows were deleted; 0 means that roll number does not exist, so 404 is returned.
+
+Big Q17
+Question: Create a node js server to list all the students having marks greater than 60 using mysql.
+What we need (requirements)
+•	MySQL table student(rollno, name, marks) with some rows.
+•	Setup:  npm install express mysql2
+Program / Code
+File: studentsAbove60.js
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
+ 
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD",     // put your MySQL password here
+    database: "collegeDB"
+});
+ 
+// GET /students/above60  -> students with marks > 60
+app.get("/students/above60", (req, res) => {
+    db.query("SELECT * FROM student WHERE marks > ?", [60], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
+ 
+app.listen(3000, () => console.log("Server running at http://localhost:3000"));
+
+How to run / test
+node studentsAbove60.js
+Postman: GET http://localhost:3000/students/above60
+
+Output
+200 OK  [ {"rollno":1,"name":"Ayesha","marks":78}, {"rollno":2,"name":"Rahul","marks":65} ]
+
+Explanation (what it does)
+•	The filtering is done by MySQL: WHERE marks > 60 returns only the students whose marks are greater than 60.
+•	The server sends the matching rows to the client as a JSON array.
+•	Students with marks 54 (below 60) are not included in the output.
+
+4. PART B - SMALL QUESTIONS (1 to 15)
+Small Q1
+Question: Create a Node.js file that will convert the output "Hello World!" into upper-case Letters.
+What we need (requirements)
+•	Node.js installed. No package is needed.
+Program / Code
+File: Uppercase.js
+// Uppercase.js
+// Convert "Hello World!" into uppercase
+ 
+let message = "Hello World!";
+let result = message.toUpperCase();     // string method
+ 
+console.log(result);
+
+How to run / test
+node Uppercase.js
+
+Output
+HELLO WORLD!
+
+Explanation (what it does)
+•	message stores the text Hello World!.
+•	toUpperCase() is a built-in JavaScript string method that returns the same text in capital letters.
+•	console.log() prints the result on the terminal.
+
+Small Q2
+Question: Create a Node.js file that opens the requested file and returns the content to the client. If anything goes wrong, throw a 404 err
+What we need (requirements)
+•	Node.js only (built-in modules http and fs).
+•	An index.html file in the same folder to test.
+Program / Code
+File: Prog2.js
+const http = require("http");
+const fs = require("fs");               // file system module
+ 
+const server = http.createServer((req, res) => {
+    // file requested by the client, e.g. /index.html -> ./index.html
+    let file = "." + req.url;
+ 
+    // if the root URL is requested, open index.html
+    if (req.url === "/") {
+        file = "./index.html";
+    }
+ 
+    fs.readFile(file, (err, data) => {
+        if (err) {
+            // file not found or cannot be read -> 404
+            res.writeHead(404, { "Content-Type": "text/plain" });
+            res.end("404 - File Not Found");
+            return;
+        }
+        // success: send the file content
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(data);
+    });
+});
+ 
+server.listen(3000, () => {
+    console.log("Server running at http://localhost:3000");
+});
+
+File: index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Node.js File Server</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>This file is returned by the Node.js server.</p>
+</body>
+</html>
+
+How to run / test
+node Prog2.js
+
+Output
+http://localhost:3000/            ->  shows the content of index.html
+http://localhost:3000/test.html   ->  shows: 404 - File Not Found
+
+Explanation (what it does)
+•	req.url gives the path typed in the browser. Adding "." in front makes it a file path in the current folder.
+•	fs.readFile() reads the file asynchronously. If the file does not exist, err is set and the server sends status 404.
+•	If there is no error, the file content (data) is sent with status 200.
+
+Small Q3
+Question: Create a Node.js file that demonstrates create database and table in MySQL
+What we need (requirements)
+•	MySQL server running.
+•	npm package mysql2:  npm install mysql2
+Program / Code
+File: createdb.js
+const mysql = require("mysql2");
+ 
+// connect to MySQL (no database yet)
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "YOUR_PASSWORD"          // put your MySQL password here
+});
+ 
+connection.connect((err) => {
+    if (err) throw err;
+    console.log("Connected to MySQL");
+ 
+    // 1. create the database
+    connection.query("CREATE DATABASE IF NOT EXISTS collegeDB", (err) => {
+        if (err) throw err;
+        console.log("Database created");
+ 
+        // 2. select the database
+        connection.changeUser({ database: "collegeDB" }, (err) => {
+            if (err) throw err;
+ 
+            // 3. create the table
+            const sql = "CREATE TABLE IF NOT EXISTS student (" +
+                        "rollno INT PRIMARY KEY, " +
+                        "name VARCHAR(50), " +
+                        "marks INT)";
+ 
+            connection.query(sql, (err) => {
+                if (err) throw err;
+                console.log("Student table created");
+                connection.end();
+            });
+        });
+    });
+});
+
+How to run / test
+node createdb.js
+
+Output
+Connected to MySQL
+Database created
+Student table created
+
+Explanation (what it does)
+•	The connection has no database name because the database does not exist yet.
+•	CREATE DATABASE IF NOT EXISTS collegeDB creates the database (no error if it already exists).
+•	changeUser({database: ...}) switches the connection to collegeDB.
+•	CREATE TABLE defines the columns: rollno (primary key), name and marks.
+•	The three steps are nested because each query must finish before the next one starts.
+
+Small Q4
+Question: Create a login component using react js consider appropriate fields.
+What we need (requirements)
+•	Vite React project (Section 2.4). Replace the code of src/App.jsx as shown.
+•	Fields: Username and Password (login is checked with admin / 1234).
+Program / Code
+File: src/App.jsx
+import { useState } from "react";
+ 
+function App() {
+    // state variables to store what the user types
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+ 
+    const handleLogin = (e) => {
+        e.preventDefault();               // stop page reload
+        if (username === "admin" && password === "1234") {
+            alert("Login Successful!");
+        } else {
+            alert("Invalid Username or Password");
+        }
+    };
+ 
+    return (
+        <div style={{ width: "300px", margin: "50px auto" }}>
+            <h2>Login</h2>
+            <form onSubmit={handleLogin}>
+                <label>Username</label><br />
+                <input
+                    type="text"
+                    placeholder="Enter Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                /><br /><br />
+ 
+                <label>Password</label><br />
+                <input
+                    type="password"
+                    placeholder="Enter Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                /><br /><br />
+ 
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    );
+}
+ 
+export default App;
+
+How to run / test
+npm run dev
+Open http://localhost:5173/
+
+Output
+admin / 1234  ->  alert: Login Successful!
+anything else ->  alert: Invalid Username or Password
+
+Explanation (what it does)
+•	useState keeps the typed text in the variables username and password.
+•	value + onChange make a controlled input: every key press updates the state.
+•	e.preventDefault() stops the browser from reloading the page when the form is submitted.
+•	The required attribute prevents submitting an empty field.
+
+Small Q5
+Question: Create a register component using react js consider appropriate fields.
+What we need (requirements)
+•	Vite React project (Section 2.4). Replace the code of src/App.jsx as shown.
+•	Fields: Name, Email, Username, Password, Mobile Number.
+Program / Code
+File: src/App.jsx
+import { useState } from "react";
+ 
+function App() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [mobile, setMobile] = useState("");
+ 
+    const handleRegister = (e) => {
+        e.preventDefault();
+        alert("Registration Successful!");
+    };
+ 
+    return (
+        <div style={{ width: "300px", margin: "50px auto" }}>
+            <h2>Registration Form</h2>
+            <form onSubmit={handleRegister}>
+                <label>Name</label><br />
+                <input type="text" value={name} required
+                    onChange={(e) => setName(e.target.value)} /><br /><br />
+ 
+                <label>Email</label><br />
+                <input type="email" value={email} required
+                    onChange={(e) => setEmail(e.target.value)} /><br /><br />
+ 
+                <label>Username</label><br />
+                <input type="text" value={username} required
+                    onChange={(e) => setUsername(e.target.value)} /><br /><br />
+ 
+                <label>Password</label><br />
+                <input type="password" value={password} required
+                    onChange={(e) => setPassword(e.target.value)} /><br /><br />
+ 
+                <label>Mobile Number</label><br />
+                <input type="tel" value={mobile} required
+                    onChange={(e) => setMobile(e.target.value)} /><br /><br />
+ 
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    );
+}
+ 
+export default App;
+
+How to run / test
+npm run dev
+Open http://localhost:5173/
+
+Output
+After filling all fields and clicking Register  ->  alert: Registration Successful!
+
+Explanation (what it does)
+•	One useState variable is used for each field.
+•	type="email" and type="tel" make the browser check the format of the email and mobile fields.
+•	The form is submitted only when all required fields are filled; handleRegister then shows the success message.
+
+Small Q6
+Question: Create a react a component to render user name and update user name when there is change [use useEffect and useState]
+What we need (requirements)
+•	Vite React project (Section 2.4). Replace the code of src/App.jsx as shown.
+•	Hooks used: useState (store the name) and useEffect (run code when the name changes).
+Program / Code
+File: src/UserName.jsx
+import { useState, useEffect } from "react";
+ 
+function UserName() {
+    const [name, setName] = useState("Ujwal");     // initial user name
+ 
+    // runs after the first render and every time "name" changes
+    useEffect(() => {
+        console.log("User name changed:", name);
+    }, [name]);
+ 
+    return (
+        <div>
+            <h1>User Name</h1>
+            <h2>Hello, {name}</h2>
+            <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your name"
+            />
+        </div>
+    );
+}
+ 
+export default UserName;
+
+File: src/App.jsx
+import UserName from "./UserName";
+ 
+function App() {
+    return (
+        <div>
+            <UserName />
+        </div>
+    );
+}
+ 
+export default App;
+
+How to run / test
+npm run dev  (type in the box and watch the browser console, F12)
+
+Output
+The heading Hello, <name> changes as you type.
+Console: User name changed: <new name>
+
+Explanation (what it does)
+•	useState("Ujwal") creates the state name with the starting value Ujwal; setName updates it.
+•	Every change in the text box calls setName, so React re-renders and the heading shows the new name.
+•	useEffect(function, [name]) runs the function after the first render and again whenever name changes. [name] is the dependency array.
+
+Small Q7
+Question: Implement a simple drop down menu using useRef in react.
+What we need (requirements)
+•	Vite React project (Section 2.4). Replace the code of src/App.jsx as shown.
+•	Hook used: useRef, which gives direct access to a DOM element.
+Program / Code
+File: src/App.jsx
+import { useRef } from "react";
+ 
+function App() {
+    const menuRef = useRef();          // reference to the menu <div>
+ 
+    // show the menu if hidden, hide it if shown
+    const showMenu = () => {
+        if (menuRef.current.style.display === "none") {
+            menuRef.current.style.display = "block";
+        } else {
+            menuRef.current.style.display = "none";
+        }
+    };
+ 
+    return (
+        <div style={{ textAlign: "center", marginTop: "50px" }}>
+            <h2>Simple Drop Down Menu</h2>
+            <button onClick={showMenu}>Menu</button>
+ 
+            <div ref={menuRef}
+                 style={{ display: "none", width: "200px",
+                          margin: "10px auto", border: "1px solid gray" }}>
+                <p>Home</p>
+                <p>About</p>
+                <p>Services</p>
+                <p>Contact</p>
+            </div>
+        </div>
+    );
+}
+ 
+export default App;
+
+How to run / test
+npm run dev
+
+Output
+Click the Menu button: the list Home / About / Services / Contact appears; click again: it hides.
+
+Explanation (what it does)
+•	useRef() creates a reference object. Writing ref={menuRef} on the <div> stores that element in menuRef.current.
+•	showMenu changes menuRef.current.style.display between "none" and "block" to hide or show the menu.
+•	The menu is hidden at the start because display: none is given in its style.
+•	Changing a ref does not re-render the component, unlike useState.
+
+Small Q8
+Question: Create a react js component which will illustrate the use of useState
+What we need (requirements)
+•	Vite React project (Section 2.4). Replace the code of src/App.jsx as shown.
+Program / Code
+File: src/Counter.jsx
+import { useState } from "react";
+ 
+function Counter() {
+    // count = current value, setCount = function to change it
+    const [count, setCount] = useState(0);
+ 
+    return (
+        <div>
+            <h1>useState Example</h1>
+            <h2>Count: {count}</h2>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+            <button onClick={() => setCount(count - 1)}>Decrement</button>
+        </div>
+    );
+}
+ 
+export default Counter;
+
+File: src/App.jsx
+import Counter from "./Counter";
+ 
+function App() {
+    return (
+        <div>
+            <Counter />
+        </div>
+    );
+}
+ 
+export default App;
+
+How to run / test
+npm run dev
+
+Output
+Count: 0. Each click on Increment adds 1 and Decrement subtracts 1.
+
+Explanation (what it does)
+•	const [count, setCount] = useState(0) gives the current value (count) and a function to change it (setCount); 0 is the initial value.
+•	When setCount is called, React stores the new value and draws the component again, so the page shows the new count.
+•	Never change count directly (count = 5); always use setCount.
+
+Small Q9
+Question: Create login and register component and routers for them using react routes.
+What we need (requirements)
+•	Vite React project and react-router-dom (npm install react-router-dom).
+•	Folder structure: src/components/Login.jsx, src/components/Register.jsx, src/App.jsx
+Program / Code
+File: src/components/Login.jsx
+import { useState } from "react";
+import { Link } from "react-router-dom";
+ 
+function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+ 
+    const handleLogin = (e) => {
+        e.preventDefault();
+        alert("Login Successful");
+    };
+ 
+    return (
+        <div>
+            <h2>Login</h2>
+            <form onSubmit={handleLogin}>
+                <input type="email" placeholder="Enter Email" value={email}
+                    onChange={(e) => setEmail(e.target.value)} />
+                <br /><br />
+                <input type="password" placeholder="Enter Password" value={password}
+                    onChange={(e) => setPassword(e.target.value)} />
+                <br /><br />
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <Link to="/register">Register</Link></p>
+        </div>
+    );
+}
+ 
+export default Login;
+
+File: src/components/Register.jsx
+import { useState } from "react";
+import { Link } from "react-router-dom";
+ 
+function Register() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+ 
+    const handleRegister = (e) => {
+        e.preventDefault();
+        alert("Registration Successful");
+    };
+ 
+    return (
+        <div>
+            <h2>Register</h2>
+            <form onSubmit={handleRegister}>
+                <input type="text" placeholder="Enter Name" value={name}
+                    onChange={(e) => setName(e.target.value)} />
+                <br /><br />
+                <input type="email" placeholder="Enter Email" value={email}
+                    onChange={(e) => setEmail(e.target.value)} />
+                <br /><br />
+                <input type="password" placeholder="Enter Password" value={password}
+                    onChange={(e) => setPassword(e.target.value)} />
+                <br /><br />
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <Link to="/login">Login</Link></p>
+        </div>
+    );
+}
+ 
+export default Register;
+
+File: src/App.jsx
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+ 
+function App() {
+    return (
+        <BrowserRouter>
+            <nav>
+                <Link to="/login">Login</Link> |{" "}
+                <Link to="/register">Register</Link>
+            </nav>
+ 
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+            </Routes>
+        </BrowserRouter>
+    );
+}
+ 
+export default App;
+
+How to run / test
+npm run dev
+Open http://localhost:5173/ and use the Login / Register links.
+
+Output
+/ and /login show the Login form; /register shows the Register form. Navigation happens without page reload.
+
+Explanation (what it does)
+•	Login and Register are separate components kept in the components folder.
+•	BrowserRouter + Routes + Route connect each URL path to a component.
+•	Link is used for navigation (in the menu and below each form) instead of <a> so the page does not reload.
+•	The path "/" is also given to Login so that Login is the default page.
+
+Small Q10
+Question: Create react component to display list of employees consider any random employee data.
+What we need (requirements)
+•	Vite React project (Section 2.4). Replace the code of src/App.jsx as shown.
+•	Array of employee objects and the map() function to display it.
+Program / Code
+File: src/EmployeeList.jsx
+function EmployeeList() {
+    // random employee data
+    const employees = [
+        { id: 1, name: "Rahul Patil", department: "IT", salary: 45000 },
+        { id: 2, name: "Sneha Sharma", department: "HR", salary: 40000 },
+        { id: 3, name: "Amit Kulkarni", department: "Finance", salary: 50000 },
+        { id: 4, name: "Priya Deshmukh", department: "Marketing", salary: 42000 }
+    ];
+ 
+    return (
+        <div>
+            <h2>Employee List</h2>
+            {employees.map((employee) => (
+                <div key={employee.id}>
+                    <h3>{employee.name}</h3>
+                    <p>Department: {employee.department}</p>
+                    <p>Salary: {employee.salary}</p>
+                    <hr />
+                </div>
+            ))}
+        </div>
+    );
+}
+ 
+export default EmployeeList;
+
+File: src/App.jsx
+import EmployeeList from "./EmployeeList";
+ 
+function App() {
+    return (
+        <div>
+            <EmployeeList />
+        </div>
+    );
+}
+ 
+export default App;
+
+How to run / test
+npm run dev
+
+Output
+Employee List: four blocks, each with name, department and salary, separated by a line.
+
+Explanation (what it does)
+•	employees is an array of objects; each object is one employee.
+•	employees.map() runs once for every employee and returns JSX, so four blocks are displayed.
+•	key={employee.id} gives each item a unique id so React can update the list efficiently.
+
+Small Q11
+Question: Create a javascript to illustrate the use of async and await.
+What we need (requirements)
+•	Node.js (or browser console). No package needed.
+Program / Code
+File: Wait.js
+// function with async keyword
+async function displayMessage() {
+    console.log("Start");
+ 
+    // await waits for the Promise to complete
+    await new Promise(resolve => {
+        setTimeout(() => {
+            console.log("Hello, this is Async/Await example");
+            resolve();               // promise completed
+        }, 2000);                    // 2 seconds delay
+    });
+ 
+    console.log("End");
+}
+ 
+// calling the async function
+displayMessage();
+
+How to run / test
+node Wait.js
+
+Output
+Start
+(2 second delay)
+Hello, this is Async/Await example
+End
+
+Explanation (what it does)
+•	async before a function means the function always returns a Promise and may use await inside.
+•	await pauses that function until the Promise is resolved; the rest of the program is not blocked.
+•	setTimeout() creates a 2-second delay; resolve() is called after it, so End is printed only after the message.
+
+Small Q12
+Question: Create a javascript to illustrate the use of promise and resolve.
+What we need (requirements)
+•	Node.js (or browser console). No package needed.
+Program / Code
+File: promise.js
+// create a Promise
+let myPromise = new Promise(function (resolve, reject) {
+    let success = true;
+ 
+    if (success) {
+        resolve("Promise is resolved successfully!");
+    } else {
+        reject("Promise is rejected!");
+    }
+});
+ 
+// use the Promise
+myPromise
+    .then(function (result) {
+        console.log(result);        // runs when resolved
+    })
+    .catch(function (error) {
+        console.log(error);         // runs when rejected
+    });
+
+How to run / test
+node promise.js
+
+Output
+Promise is resolved successfully!
+
+Explanation (what it does)
+•	A Promise represents a value that will be available later. It has three states: pending, fulfilled (resolved) and rejected.
+•	resolve(value) marks the promise as successful; reject(reason) marks it as failed.
+•	.then() handles the success result and .catch() handles the error. Change success to false to see the reject output.
+
+Small Q13
+Question: Create any react component to illustrate the react hook.
+What we need (requirements)
+•	Vite React project (Section 2.4). Replace the code of src/App.jsx as shown.
+•	Hooks used: useState and useEffect.
+Program / Code
+File: src/HookDemo.jsx
+import { useState, useEffect } from "react";
+ 
+function HookDemo() {
+    const [count, setCount] = useState(0);
+    const [name, setName] = useState("Ujwal");
+ 
+    // runs whenever "count" changes: updates the browser tab title
+    useEffect(() => {
+        document.title = "Count: " + count;
+        console.log("Count changed:", count);
+    }, [count]);
+ 
+    return (
+        <div>
+            <h1>React Hook Demo</h1>
+            <h2>Hello, {name}</h2>
+            <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+            <h3>Count: {count}</h3>
+            <button onClick={() => setCount(count + 1)}>Increase Count</button>
+        </div>
+    );
+}
+ 
+export default HookDemo;
+
+File: src/App.jsx
+import HookDemo from "./HookDemo";
+ 
+function App() {
+    return (
+        <div>
+            <HookDemo />
+        </div>
+    );
+}
+ 
+export default App;
+
+How to run / test
+npm run dev
+
+Output
+Typing in the box changes the name; clicking the button increases Count and the browser tab title shows the count.
+
+Explanation (what it does)
+•	Hooks are special React functions (names start with use) that let function components have state and side effects.
+•	useState stores the values name and count.
+•	useEffect(..., [count]) runs after render only when count changes; here it updates document.title.
+•	Rule: hooks must be called at the top level of a component, not inside loops or if statements.
+
+Small Q14
+Question: Create javascript application to illustrate the use of callback under functions.
+What we need (requirements)
+•	Node.js (or browser console). No package needed.
+Program / Code
+File: Callback.js
+// function that receives another function (callback) as a parameter
+function calculate(a, b, callback) {
+    let result = a + b;
+    callback(result);               // call the callback with the result
+}
+ 
+// callback function
+function display(result) {
+    console.log("Addition = " + result);
+}
+ 
+// calling the function: pass display WITHOUT ()
+calculate(10, 20, display);
+
+How to run / test
+node Callback.js
+
+Output
+Addition = 30
+
+Explanation (what it does)
+•	A callback is a function that is passed as an argument to another function and is called inside it.
+•	calculate() adds the two numbers and then calls the callback it received, passing the result.
+•	display is passed without brackets; display() would run it immediately instead of passing it.
+•	Callbacks are widely used in Node.js, e.g. in fs.readFile() and db.query().
+
+Small Q15
+Question: Create a react component to display list of students consider any random student data.
+What we need (requirements)
+•	Vite React project (Section 2.4). Replace the code of src/App.jsx as shown.
+Program / Code
+File: src/App.jsx
+function App() {
+    // random student data
+    const students = [
+        { id: 1, name: "Rahul", age: 21, course: "BCA" },
+        { id: 2, name: "Priya", age: 22, course: "BBA" },
+        { id: 3, name: "Amit", age: 21, course: "BCS" },
+        { id: 4, name: "Sneha", age: 22, course: "BCA" },
+        { id: 5, name: "Pooja", age: 21, course: "BCS" }
+    ];
+ 
+    return (
+        <div>
+            <h1>Student List</h1>
+            <ul>
+                {students.map((student) => (
+                    <li key={student.id}>
+                        {student.name} - {student.age} - {student.course}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+ 
+export default App;
+
+How to run / test
+npm run dev
+
+Output
+Student List
+Rahul - 21 - BCA
+Priya - 22 - BBA
+Amit - 21 - BCS
+Sneha - 22 - BCA
+Pooja - 21 - BCS
+
+Explanation (what it does)
+•	students is an array of objects holding id, name, age and course.
+•	map() creates one <li> list item for every student.
+•	{ } inside JSX is used to write JavaScript expressions such as student.name.
+•	key={student.id} is a unique key required by React for items in a list.
+
+5. Important Terms (for viva)
+Term	Meaning
+Node.js	Runtime that executes JavaScript on the server (outside the browser).
+npm	Node Package Manager - installs libraries such as express and mysql2.
+Express	Node.js framework used to create web servers and REST APIs.
+REST API	Web service that uses HTTP methods: GET (read), POST (create), PUT (update), DELETE (remove).
+Middleware	Function that runs before the route handler, e.g. express.json() reads the JSON body.
+Callback	A function passed to another function and called later (asynchronous work).
+Promise	Object for a value available in the future: pending, resolved or rejected.
+async / await	Modern syntax to write Promise based code in a simple top-to-bottom way.
+JWT	JSON Web Token - signed token (header.payload.signature) used for authentication.
+JSX	HTML-like syntax written inside JavaScript in React.
+Component	Reusable function in React that returns JSX.
+State / useState	Data of a component that can change; changing it re-renders the component.
+useEffect	Hook that runs code after render or when the listed values change.
+useRef	Hook that gives direct access to a DOM element; changing it does not re-render.
+React Router	Library for navigation between pages: BrowserRouter, Routes, Route, Link.
+Regular expression	Pattern used to check text, e.g. only alphabets or a valid email.
+
